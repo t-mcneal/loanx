@@ -52,7 +52,7 @@ def monPayment(loan, intRate, years):
     """Return monthly payment amount.
 
     1. Calculate the monthly payment amount of a student loan 
-       in the LoanX forms below.
+       in the LoanX forms.
     2. Parse calculation to round number to 2 decimal places
     3. Return monthly payment amount
 
