@@ -232,7 +232,7 @@ class StudentLoan(object):
         """Return details of payment duration.
 
         Keyword arguements:
-        month - amount of months left to pay within final payoff year
+        month - number of months it will take to repay loan
         """
         return f'''The ${self.loan:,.2f} loan will take {math.floor(month / 12)} years 
         and {month % 12} months to repay with a monthly payment of ${self.payment:,.2f}.'''
