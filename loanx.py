@@ -1,5 +1,5 @@
 
-# The LoanX tool is designed with Google Colab.
+# The LoanX tool is designed on Google Colab.
 
 
 ##################################################################
@@ -362,7 +362,7 @@ except:
 
 
 ##################################################################
-# MARKDOWN + CODE INSIDE "Download Amortization" CELL
+# MARKDOWN + CODE INSIDE "Download Amortization Schedule" CELL
 
 #@title << Download Amortization Schedule
 # double click the empty area on the right to hide code  -->
