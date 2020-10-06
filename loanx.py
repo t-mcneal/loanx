@@ -45,7 +45,7 @@ def monPayment(loan, intRate, years):
     After calculating the monthly payment, the dollar amount can
     equal long double values (i.e. 105.12893837). This method
     rounds to two decimal places to present the number as a normal 
-    doallar amount. The rounding needs to be every accurate, and 
+    dollar amount. The rounding needs to be very accurate, and 
     consider financial portions that are less than 1 cent. 
 
     Keyword arguments:
