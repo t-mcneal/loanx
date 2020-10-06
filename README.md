@@ -11,4 +11,5 @@ Click the badge below to use the LoanX tool.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xflmfMgwZ6wUg5oDzCE4diYif18QZg5r?usp=sharing)
 
-
+## License
+[MIT](https://github.com/t-mcneal/loanx/blob/master/LICENSE)
