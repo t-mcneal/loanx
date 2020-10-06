@@ -346,7 +346,7 @@ except:
 # double click the empty area on the right to hide code  -->
 
 
-# Python code for Downloading CSV file
+# Python code for Downloading CSV files
 try:
     download(a.schedule())
 except:
