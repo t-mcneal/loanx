@@ -34,7 +34,7 @@ def numsValid(lst):
     Return boolean (true or false)
 
     KeyWord arguments:
-    lst - list of numbers
+    lst -- list of numbers
     
     """
     for nums in lst:
@@ -57,9 +57,9 @@ def monPayment(loan, intRate, years):
     3. Return monthly payment amount
 
     Keyword arguments:
-    loan - laon amount
-    intRate - interest rate
-    years - years to repay loan
+    loan -- laon amount
+    intRate -- interest rate
+    years -- years to repay loan
     """
     j = intRate / 12
     n = years * 12
@@ -86,7 +86,7 @@ def checkRate(intRate):
     rate is less than 100%.
 
     Keyword arguments:
-    intRate - interest rate
+    intRate -- interest rate
     """
     if intRate >= 1:
         intRate = intRate / 100
@@ -97,7 +97,7 @@ def download(dataFrame):
     """Download Pandas dataframe as a CSV file.
 
     Keyword arguments:
-    dataFrame - Pandas data frame
+    dataFrame -- Pandas data frame
     """
     df = dataFrame
     df.to_csv('amortization_schedule.csv')
@@ -109,23 +109,23 @@ def download(dataFrame):
 # The code below creates a StudentLoan class
 #
 # Keyword arguments:
-#       loan - student loan amount
-#       intRate - interest rate
-#       payment - monthly payment amount
-#       years - years to repay loan
+#       loan -- student loan amount (default 1000)
+#       intRate -- interest rate (default 0.001)
+#       payment -- monthly payment amount (default 100)
+#       years -- years to repay loan (default 1)
 #
 # Methods:
-#       1. setLoan() - set the loan amount
-#       2. setIntRate() - set the interest rate
-#       3. setPayment() - set the monthly payment amount
-#       4. setYears() - set the number of years to repay the loan
-#       5. repay() - return the time it will take to repay loan
-#       6. schedule() - return loan amortazion schedule
+#       1. setLoan() -- set the loan amount
+#       2. setIntRate() -- set the interest rate
+#       3. setPayment() -- set the monthly payment amount
+#       4. setYears() -- set the number of years to repay the loan
+#       5. repay() -- return the time it will take to repay loan
+#       6. schedule() -- return loan amortazion schedule
 
 class StudentLoan(object):
 
-    def __init__(self, loan = 1000, intRate = 0.001,
-                 payment = 100, years = 1):
+    def __init__(self, loan=1000, intRate=0.001,
+                 payment=100, years=1):
         """The constructor"""
         self.loan = loan
         self.intRate = intRate
@@ -150,10 +150,10 @@ class StudentLoan(object):
 
     # List of variable names in the methods below:
     #
-    # pb - Principal Balance
-    # intPaid - Interest Paid
-    # prinPaid - Principal Paid
-    # nb - New Balance
+    # pb -- Principal Balance
+    # intPaid -- Interest Paid
+    # prinPaid -- Principal Paid
+    # nb -- New Balance
 
     def repay(self):
         """Return time it will take to repay loan"""
@@ -207,8 +207,8 @@ class StudentLoan(object):
                     dataRow.append('$0.00')
                 scheduleData.append(dataRow)
 
-        # np - NumPy
-        # pd - Pandas
+        # np -- NumPy
+        # pd -- Pandas
         userData = np.array(scheduleData)
         column_names = ['Month', 'Principal_Balance', 'Payment', 'Interest_Paid', 'Principal_Paid', 'New_Balance']
         df = pd.DataFrame(data=userData, columns=column_names)
@@ -220,7 +220,7 @@ class StudentLoan(object):
         """Return new principal balance of loan after making a payment.
 
         Keyword arguments:
-        pb - principal balance
+        pb -- principal balance
         """
         intPaid = self.intRate / 12 * pb
         prinPaid = self.payment - intPaid
@@ -232,7 +232,7 @@ class StudentLoan(object):
         """Return details of payment duration.
 
         Keyword arguements:
-        month - number of months it will take to repay loan
+        month -- number of months it will take to repay loan
         """
         return f'''The ${self.loan:,.2f} loan will take {math.floor(month / 12)} years 
         and {month % 12} months to repay with a monthly payment of ${self.payment:,.2f}.'''
@@ -253,9 +253,9 @@ class StudentLoan(object):
         """Return monthly payment amount.
 
         Keyword arguments:
-        loan - laon amount
-        intRate - interest rate
-        years - years to repay loan
+        loan -- laon amount
+        intRate -- interest rate
+        years -- years to repay loan
         """
         j = intRate / 12
         n = years * 12
