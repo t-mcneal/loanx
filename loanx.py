@@ -96,27 +96,18 @@ def download(dataFrame):
     files.download('amortization_schedule.csv')
 
 
-# StudentLoan CLASS
-#
-# Keyword arguments:
-#       loan -- student loan amount (default 1000)
-#       intRate -- interest rate (default 0.001)
-#       payment -- monthly payment amount (default 100)
-#       years -- years to repay loan (default 1)
-#
-# Methods:
-#       1. setLoan() -- set the loan amount
-#       2. setIntRate() -- set the interest rate
-#       3. setPayment() -- set the monthly payment amount
-#       4. setYears() -- set the number of years to repay the loan
-#       5. repay() -- return the time it will take to repay loan
-#       6. schedule() -- return loan amortazion schedule
-
 class StudentLoan(object):
 
     def __init__(self, loan=1000, intRate=0.001,
                  payment=100, years=1):
-        """The constructor"""
+        """The constructor
+        
+        Keyword arguments:
+        loan -- student loan amount (default 1000)
+        intRate -- interest rate (default 0.001)
+        payment -- monthly payment amount (default 100)
+        years -- years to repay loan (default 1)
+        """
         self.loan = loan
         self.intRate = intRate
         self.payment = payment
