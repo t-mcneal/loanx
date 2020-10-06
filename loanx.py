@@ -13,11 +13,6 @@ Interest_Rate =   0#@param {type:"number"}
 Years_to_Repay =   0#@param {type:"number"}
 
 
-# LoanX uses the Python libaries NumPy and Pandas. These two
-# powerful libraries are popularly used for data analysis and 
-# visualization. The libraries are implemented in the code 
-# for the StudentLoan class.
-
 import numpy as np
 import pandas as pd
 import math
@@ -30,12 +25,8 @@ def numsValid(lst):
     """Return True if all numbers in the list are greater than 0.
     Returns False otherwise.
 
-    Checks if user inputs are valid numbers greater than 0
-    Return boolean (true or false)
-
     KeyWord arguments:
     lst -- list of numbers
-    
     """
     for nums in lst:
         if nums <= 0:
@@ -51,10 +42,11 @@ def numsValid(lst):
 def monPayment(loan, intRate, years):
     """Return monthly payment amount.
 
-    1. Calculate the monthly payment amount of a student loan 
-       in the LoanX forms.
-    2. Parse calculation to round number to 2 decimal places
-    3. Return monthly payment amount
+    After calculating the monthly payment, the dollar amount can
+    equal long double values (i.e. 105.12893837). This method
+    rounds to two decimal places to present the number as a normal 
+    doallar amount. The rounding needs to be every accurate, and 
+    consider financial portions that are less than 1 cent. 
 
     Keyword arguments:
     loan -- laon amount
@@ -66,7 +58,7 @@ def monPayment(loan, intRate, years):
     monPay = loan * (j / (1 - (1 + j)**-n))
     strMonPay = str(monPay)
     if '.' in strMonPay:
-        strMonPay = strMonPay.split('.') # parse string to get first 2 numbers after decimal 
+        strMonPay = strMonPay.split('.')
         r = strMonPay[1]
         if len(r) > 2:
             r = int(r[:2]) + 1 
@@ -105,8 +97,6 @@ def download(dataFrame):
 
 
 # StudentLoan CLASS
-#
-# The code below creates a StudentLoan class
 #
 # Keyword arguments:
 #       loan -- student loan amount (default 1000)
@@ -292,11 +282,6 @@ class StudentLoan(object):
 
 
 # Python code for "Calculate Monthly Payment" FORM
-# 1. Check if inputs are valid numbers 
-# 2. Check if interest rate input is decimal or percent
-# 3. Calculate monthly payment
-# 4. Handle exceptions
-    
 try:
     valid = numsValid([Loan_Amount, Interest_Rate, Years_to_Repay])
     if valid:
@@ -330,13 +315,6 @@ Monthly_Payment =   0#@param {type:"number"}
 
 
 # Python code for "Create Amortization Schedule" FORM
-# 1. Check if inputs are valid numbers 
-# 2. Check if interest rate input is decimal or percent
-# 3. Creates a StudentLoan object
-# 4. Call and print repay() method
-# 5. Display loan amortization schedule
-# 6. Handle exceptions
-
 try:
     valid = numsValid([Loan_Amount, Interest_Rate, Monthly_Payment, Years_to_Repay])
     if valid:
@@ -369,9 +347,6 @@ except:
 
 
 # Python code for Downloading CSV file
-# 1. Call the download() function
-# 2. Hanlde exceptions
-
 try:
     download(a.schedule())
 except:
