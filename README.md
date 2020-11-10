@@ -7,6 +7,6 @@ Borrowers can also explore how to reach their debt-free goals quicker! LoanX off
 
 ## Usage 
 
-Click the badge below to use LoanX. 
+A Google account sign-in is required to run Google Colab environments. Click the badge below to use LoanX. 
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xflmfMgwZ6wUg5oDzCE4diYif18QZg5r?usp=sharing)
