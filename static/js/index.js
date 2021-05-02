@@ -5,8 +5,7 @@ $(document).ready(function() {
             interestRate: $("#txtInterestRate").val(),
             yearsToRepay: $("#txtYearsToRepay").val()
         }, function(data) {
-            $("#monthlyPayment").text(data.result);
-            console.log(data.result)
+            $("#monthlyPayment").text("$" + data.result);
         });
         return false;
     });
