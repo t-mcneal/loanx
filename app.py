@@ -5,18 +5,15 @@ import pandas
 
 app = Flask(__name__)
 
-
-
-@app.route('/get_monthly_payment', methods=['POST'])
+@app.route('/get_monthly_payment', methods=['GET','POST'])
 def get_monthly_payment():
-    if request.method == "POST":
-        loanAmount = float(request.form['loanAmount'])
-        interestRate = float(request.form['interestRate'])
-        yearsToRepay = int(request.form['yearsToRepay'])
-        payment = getMonPayment(loanAmount, interestRate, yearsToRepay)
-        return render_template('index.html', result=f'{payment:.2f}')
+    loanAmount = request.args.get('loanAmount', 0, type=float)
+    interestRate = checkRate(request.args.get('interestRate', 0, type=float))
+    yearsToRepay = request.args.get('yearsToRepay', 0, type=int)
+    payment = getMonPayment(loanAmount, interestRate, yearsToRepay)
+    return jsonify(result=payment)
 
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def home():
     return render_template('index.html')
 
@@ -44,6 +41,19 @@ def getMonPayment(loan, intRate, years):
             r = int(r[:2])
         return math.floor(monPay) + (r / 100)
     return monPay
+
+def checkRate(intRate):
+    """Check if interest rate is decimal or percentage.
+    Interest rates can be entered on the LoanX forms as a 
+    decimal or percent value. LoanX will assume the interest
+    rate is less than 100%.
+    
+    Keyword arguments:
+    intRate -- interest rate
+    """
+    if intRate >= 1:
+        intRate = intRate / 100
+    return intRate
     
 
 class StudentLoan(object):

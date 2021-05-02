@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>LoanX</title>
@@ -10,26 +10,23 @@
     </header>
 
     <main>
-        <form action="{{ url_for('get_monthly_payment') }}" id="studentLoanCalcForm" method="POST">
+        <form id="studentLoanCalcForm" method="POST">
            <p>Calculate Monthly Payment</p>
 
            <label for="txtLoanAmount">Loan Amount: </label>
            <input type="text" id="txtLoanAmount" name="loanAmount">
            <br>
            <label for="txtInterestRate">Interest Rate: </label>
-           <input type="text" id="textInterestRate" name="interestRate">
+           <input type="text" id="txtInterestRate" name="interestRate">
            <br>
            <label for="txtYearsToRepay">Years to Repay: </label>
            <input type="text" id="txtYearsToRepay" name="yearsToRepay">
            <br>
-           <button id="btnSubmit" onclick="">SUBMIT</button>
+           <button id="btnSubmit">SUBMIT</button>
         </form>
 
-        <span id="monthlyPayment">
-            {% if result %}
-            {{ result }}
-            {% endif %}
-        </span> <!--monthlyPayment div ends here-->
+        <div id="monthlyPayment">
+        </div> <!--monthlyPayment div ends here-->
 
         <div id="paymentSchedule">
         </div> <!--paymentSchedule div ends here-->
@@ -39,9 +36,9 @@
 
     </footer>
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <!-- <script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script> -->
+    <script type=text/javascript>$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
-
 </body>
 </html>
