@@ -1,21 +1,28 @@
 from flask import Flask, jsonify, render_template, request
 import math
-import numpy
-import pandas
+import numpy as np
+import pandas as pd
+import json
+from typing import List
+
 
 app = Flask(__name__)
 
-@app.route('/get_monthly_payment', methods=['GET','POST'])
-def get_monthly_payment():
-    loanAmount = request.args.get('loanAmount', 0, type=float)
-    interestRate = checkRate(request.args.get('interestRate', 0, type=float))
-    yearsToRepay = request.args.get('yearsToRepay', 0, type=int)
-    payment = getMonPayment(loanAmount, interestRate, yearsToRepay)
-    return jsonify(result=payment)
 
-@app.route('/', methods=['GET','POST'])
+@app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template('index.html')
+
+
+@app.route('/get_monthly_payment', methods=['GET', 'POST'])
+def get_monthly_payment():
+    loanAmount = request.args.get('loanAmount', 0, type=float)
+    interestRate = request.args.get('interestRate', 0, type=float) / 100
+    yearsToRepay = request.args.get('yearsToRepay', 0, type=int)
+    payment = getMonPayment(loanAmount, interestRate, yearsToRepay)
+    studentLoan = StudentLoan(loanAmount, interestRate, payment, yearsToRepay)
+    loanSchedule = studentLoan.getSchedule().to_html(table_id='scheduleDataFrame')
+    return jsonify(result=payment, schedule=loanSchedule)
 
 
 def getMonPayment(loan, intRate, years):
@@ -42,26 +49,13 @@ def getMonPayment(loan, intRate, years):
         return math.floor(monPay) + (r / 100)
     return monPay
 
-def checkRate(intRate):
-    """Check if interest rate is decimal or percentage.
-    Interest rates can be entered on the LoanX forms as a 
-    decimal or percent value. LoanX will assume the interest
-    rate is less than 100%.
-    
-    Keyword arguments:
-    intRate -- interest rate
-    """
-    if intRate >= 1:
-        intRate = intRate / 100
-    return intRate
-    
 
 class StudentLoan(object):
 
     def __init__(self, loan=1000, intRate=0.001,
                  payment=100, years=1):
         """The constructor.
-        
+
         Keyword arguments:
         loan -- student loan amount (default 1000)
         intRate -- interest rate (default 0.001)
@@ -96,7 +90,7 @@ class StudentLoan(object):
     # prinPaid -- Principal Paid
     # nb -- New Balance
 
-    def repay(self):
+    def getRepayTime(self):
         """Return time it will take to repay loan"""
         nb = self.loan
         lastMonth = self.years * 12
@@ -104,20 +98,19 @@ class StudentLoan(object):
             if nb > 0:
                 month = i + 1
                 pb = nb
-                nb = self.__newBal(pb)
+                nb = self.__getNewBalance(pb)
         if month == lastMonth and nb > 0:
-            payIncr = self.__payIncrease()
+            payIncr = self.__getIncreasePay()
             return payIncr
         else:
-            payDet = self.__payDetails(month)
+            payDet = self.__getPayDetails(month)
             return payDet
-            
 
-    # NumPy and Pandas is used in the schedule() method
+    # NumPy and Pandas is used in the getSchedule() method
     # below to create a data frame. The created data frame
-    # is an amortization schedule. 
-    
-    def schedule(self):
+    # is an amortization getSchedule.
+
+    def getSchedule(self):
         """Return loan amortization schedule"""
         pd.set_option('max_rows', 360)
         nb = self.loan
@@ -134,10 +127,10 @@ class StudentLoan(object):
                 intPaid = self.intRate / 12 * pb
                 prinPaid = self.payment - intPaid
                 if prinPaid > pb:
-                  prinPaid = pb
-                  payment = intPaid + prinPaid
+                    prinPaid = pb
+                    payment = intPaid + prinPaid
                 nb = pb - prinPaid
-                dataRow.append(month) 
+                dataRow.append(month)
                 dataRow.append(f'${pb:,.2f}')
                 dataRow.append(f'${payment:,.2f}')
                 dataRow.append(f'${intPaid:,.2f}')
@@ -147,19 +140,21 @@ class StudentLoan(object):
                 else:
                     dataRow.append('$0.00')
                 scheduleData.append(dataRow)
-        
+
         # np -- NumPy
         # pd -- Pandas
         userData = np.array(scheduleData)
-        column_names = ['Month', 'Principal_Balance', 'Payment', 'Interest_Paid', 'Principal_Paid', 'New_Balance']
+        column_names = ['Month', 'Principal_Balance', 'Payment',
+                        'Interest_Paid', 'Principal_Paid', 'New_Balance']
         df = pd.DataFrame(data=userData, columns=column_names)
         df.set_index('Month', inplace=True)
+        # return df
         return df
 
     # Private Method
-    def __newBal(self, pb):
+    def __getNewBalance(self, pb):
         """Return new principal balance of loan after making a payment.
-        
+
         Keyword arguments:
         pb -- principal balance
         """
@@ -169,9 +164,9 @@ class StudentLoan(object):
         return nb
 
     # Private Method
-    def __payDetails(self, month):
+    def __getPayDetails(self, month):
         """Return details of payment duration.
-        
+
         Keyword arguements:
         month -- number of months it will take to repay loan
         """
@@ -179,18 +174,18 @@ class StudentLoan(object):
 and {month % 12} months to repay with a monthly payment of ${self.payment:,.2f}.'''
 
     # Private Method
-    def __payIncrease(self):
+    def __getIncreasePay(self):
         """Return suggestion to increase monthly payment"""
-        mPay = self.__monPayment(self.loan, self.intRate, self.years)
+        mPay = self.__getMonPayment(self.loan, self.intRate, self.years)
         word = 'year'
         if self.years > 1:
             word = word + 's'
         return f'''The ${self.loan:,.2f} loan will take over {self.years} years to repay
 with a monthly payment of ${self.payment:,.2f}. \n\nIncrease monthly payment to ${mPay:,.2f} to repay the loan 
 within {self.years} {word}.'''
-        
+
     # Private Method
-    def __monPayment(self, loan, intRate, years):
+    def __getMonPayment(self, loan, intRate, years):
         """Return monthly payment amount.
 
         Keyword arguments:
@@ -216,7 +211,8 @@ within {self.years} {word}.'''
 
     def __repr__(self):
         """Representation of StudentLoan object"""
-        print(f'StudentLoan({self.loan}, {self.intRate}, {self.payment}, {self.years})')
+        print(
+            f'StudentLoan({self.loan}, {self.intRate}, {self.payment}, {self.years})')
 
     def __str__(self):
         """String representation of StudentLoan object"""
@@ -227,4 +223,3 @@ within {self.years} {word}.'''
 of {self.intRate * 100:.2f}% and monthly payment of ${self.payment:,.2f}.''')
         print()
         print(f'The loan must be repaid within {self.years} {word}.')
-
