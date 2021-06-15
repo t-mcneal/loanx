@@ -5,8 +5,10 @@ body {
 #scheduleDataFrame {
     font-family: Arial, sans-serif;
     font-size: 12px;
-    border-collapse: collapse;
     width: 50%;
+    display: none;
+    border-collapse: collapse;
+    border: none;
 }
 
 #scheduleDataFrame td, #scheduleDataFrame th {
