@@ -38,8 +38,8 @@ def getMonPayment(loan, intRate, years):
     monPay = loan * (j / (1 - (1 + j)**-n))
     strMonPay = str(monPay)
     if '.' in strMonPay:
-        strMonPay = strMonPay.split('.')
-        r = strMonPay[1]
+        numList = strMonPay.split('.')
+        r = numList[1]
         if len(r) > 2:
             r = int(r[:2]) + 1
         elif len(r) == 1:
