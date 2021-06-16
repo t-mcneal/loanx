@@ -21,7 +21,7 @@ def get_monthly_payment():
     yearsToRepay = request.args.get('yearsToRepay', 0, type=int)
     payment = getMonPayment(loanAmount, interestRate, yearsToRepay)
     studentLoan = StudentLoan(loanAmount, interestRate, payment, yearsToRepay)
-    loanSchedule = studentLoan.getSchedule().to_html(table_id='scheduleDataFrame')
+    loanSchedule = studentLoan.getSchedule().to_html(index=False, table_id='scheduleDataFrame')
     return jsonify(result=payment, schedule=loanSchedule)
 
 
@@ -144,11 +144,9 @@ class StudentLoan(object):
         # np -- NumPy
         # pd -- Pandas
         userData = np.array(scheduleData)
-        column_names = ['Month', 'Principal_Balance', 'Payment',
-                        'Interest_Paid', 'Principal_Paid', 'New_Balance']
+        column_names = ['Month', 'Principal Balance', 'Payment',
+                        'Interest Paid', 'Principal Paid', 'New Balance']
         df = pd.DataFrame(data=userData, columns=column_names)
-        df.set_index('Month', inplace=True)
-        # return df
         return df
 
     # Private Method
