@@ -25,6 +25,21 @@ def get_monthly_payment():
     return jsonify(result=payment, schedule=loanSchedule)
 
 
+
+@app.route('/get_explore_payment', methods=['GET', 'POST'])
+def get_explore_payment():
+    loanAmount = request.args.get('loanAmount', 0, type=float)
+    interestRate = request.args.get('interestRate', 0, type=float) / 100
+    yearsToRepay = request.args.get('yearsToRepay', 0, type=int)
+    extraPayment = request.args.get('extraPayment', 0, type=float)
+    payment = getMonPayment(loanAmount, interestRate, yearsToRepay)
+    increasedPayment = payment + extraPayment
+    studentLoan = StudentLoan(loanAmount, interestRate, increasedPayment, yearsToRepay)
+    loanSchedule = studentLoan.getSchedule().to_html(index=False, table_id='scheduleDataFrame')
+    earlyPayoff = studentLoan.getRepayTime().lower()
+    return jsonify(result=increasedPayment, schedule=loanSchedule, details=earlyPayoff, originalPayment=payment)
+
+
 def getMonPayment(loan, intRate, years):
     """Return monthly payment amount.
 
@@ -169,7 +184,7 @@ class StudentLoan(object):
         month -- number of months it will take to repay loan
         """
         return f'''The ${self.loan:,.2f} loan will take {math.floor(month / 12)} years 
-and {month % 12} months to repay with a monthly payment of ${self.payment:,.2f}.'''
+and {month % 12} months to repay with an increased monthly payment of ${self.payment:,.2f}.'''
 
     # Private Method
     def __getIncreasePay(self):
