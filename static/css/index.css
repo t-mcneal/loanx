@@ -58,21 +58,19 @@ main {
     background: linear-gradient(90deg, #F0F0F0 50%, #FFFFFF 50%);
 }
 
-#formDiv {
+.side-by-side {
     margin: 20px 0 20px 0;
     width: 45%;
     height: 400px;
     border: none;
     padding: 20px;
+}
+
+#formDiv {
     background-color: #F0F0F0;
 }
 
 #paymentDiv {
-    margin: 20px 0 20px 0;
-    width: 45%;
-    height: 400px;
-    border: none;
-    padding: 20px;
     text-align: center;
 }
 
@@ -81,10 +79,9 @@ main {
     margin-right: 90px;
 }
 
-#btnExplore {
+#btnApplyExtraPay {
     display: inline;
 }
-
 
 label, 
     button {
@@ -106,6 +103,7 @@ button {
 
 #btnSchedule {
     width: 250px;
+    margin-top: 100px;
 }
 
 button:hover {
@@ -128,8 +126,8 @@ input[type=text] {
 
 input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+        -webkit-appearance: none;
+        margin: 0;
 }
 
 #txtLoanAmount {
@@ -194,7 +192,7 @@ input[type=text]:focus {
     display: none;
 }
 
-#exploreOverview {
+.exploreOverview {
     margin-left: 15px;
 }
 
@@ -217,24 +215,19 @@ input[type=text]:focus {
     width: 100%;
 }
 
-#scheduleDataFrame td, #scheduleDataFrame th {
-    border: 1px solid #DDDDDD;
-    padding: 8px;
-    text-align: right;
-    font-size: 14px;
+#scheduleDataFrame td, 
+    #scheduleDataFrame th {
+        border: 1px solid #DDDDDD;
+        padding: 8px;
+        text-align: right;
+        font-size: 14px;
 }
-
 
 #scheduleDataFrame th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
     background-color: #32CD32;
-  }
-
-
-#btnSchedule {
-    margin-top: 100px;
 }
 
 #monthlyPayment {
