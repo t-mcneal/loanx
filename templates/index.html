@@ -27,30 +27,30 @@
 
             <div id="calcBox">
                 <div class="flex-container">
-                    <div class="flex-item-left" id="formDiv">
+                    <div class="flex-item-left side-by-side" id="formDiv">
                         <form id="studentLoanCalcForm" method="POST">
                             <label for="txtLoanAmount">Loan Amount</label><br>
                             <span class="input-wrapper">
                                 <span class="sign dollarSign">$</span>
-                                <input type="text" class="number" id="txtLoanAmount" name="loanAmount">
+                                <input type="text" class="number" id="txtLoanAmount" name="loanAmount" placeholder="0.00">
                             </span>
                             <br>
                             <label for="txtInterestRate">Interest Rate</label><br>
                             <span class="input-wrapper">
-                                <input type="text" class="number" id="txtInterestRate" name="interestRate">
+                                <input type="text" class="number" id="txtInterestRate" name="interestRate" placeholder="0">
                                 <span class="sign" id="percentSign">%</span>
                             </span>
                             <br>
                             <label for="txtYearsToRepay">Loan Term in Years</label><br>
                             <span class="input-wrapper">
-                                <input type="text" class="number" id="txtYearsToRepay" name="yearsToRepay">
+                                <input type="text" class="number" id="txtYearsToRepay" name="yearsToRepay" placeholder="0">
                             </span>
                             <br>
                             <button type="button" id="btnCalculate">CALCULATE</button>
                         </form>
                     </div> <!--formDiv ends here-->
 
-                    <div class="flex-item-right" id="paymentDiv">
+                    <div class="flex-item-right side-by-side" id="paymentDiv">
                         <h3>Your Monthly Payment</h3>
 
                         <p id="monthlyPayment">$0.00</p>
@@ -73,20 +73,23 @@
                 </div> <!--exploreTop div ends here-->
 
                 <div id="exploreHidden">
-                    <p class="overview" id="exploreOverview">If you're interested in exploring the possibility of
+                    <p class="overview exploreOverview">If you're interested in exploring the possibility of
                         repaying your loan faster, increase your monthly payment by entering an extra amount below. 
                         By increasing your monthly payment amount, you can cut down on the duration of years and 
                         months it will take you to pay off the loan. Explore how you can reach your debt-free goals 
                         quicker!
                     </p>
 
+                    <div id="payDetails">
+                    </div> <!--payDetails div ends here-->
+
                     <form>
                         <label for="txtExtraPayment">Extra Payment Amount</label><br>
                         <span class="input-wrapper">
                             <span class="sign dollarSign">$</span>
-                            <input type="text" class="number" id="txtExtraPayment" name="extraPayment">
+                            <input type="text" class="number" id="txtExtraPayment" name="extraPayment" placeholder="0.00">
                         </span>
-                        <button type="button" id="btnExplore" onclick="applyExtraPayment();">Apply Extra Payment</button>
+                        <button type="button" id="btnApplyExtraPay">Apply Extra Payment</button>
                     </form>
                 </div> <!--exploreHidden div ends here-->
             </div> <!--exploreBox div ends here-->
@@ -111,7 +114,6 @@
         </p>
 
         <p>&#169 LoanX</p>
-
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
