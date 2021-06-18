@@ -82,12 +82,12 @@ $(document).ready(function(){
         // allow key codes for both number row and number pad
         for (let i = 48; i < 58; i++) {
             allowedKeyCodes.add(i);
-            allowedKeyCodes.add(i + 48)
+            allowedKeyCodes.add(i + 48);
         }
         
         // allow key codes for arrow keys
         for (let i = 37; i < 41; i++) {
-            allowedKeyCodes.add(i)
+            allowedKeyCodes.add(i);
         }
 
         // allow key codes for period, delete, and backspace keys
@@ -96,9 +96,9 @@ $(document).ready(function(){
         allowedKeyCodes.add(190);
 
        // dis-allow all other keyboard codes
-       if (!allowedKeyCodes.has(event.which)) {  
-          event.preventDefault();  
-        }  
+       if (!allowedKeyCodes.has(event.which)) {
+           event.preventDefault();
+        }
     });  
 }); 
 
