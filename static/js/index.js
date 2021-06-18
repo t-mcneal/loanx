@@ -150,7 +150,7 @@ $(document).ready(function() {
 function viewSchedule() {
     document.getElementById("scheduleDataFrame").style.display = "table"; // data.schedule (returned from server) ID selector is scheduleDataFrame
     document.getElementById("scheduleHeader").style.display = "block";
-    document.getElementById("scheduleViewButton").innerHTML = '<button id="btnSchedule" onclick="hideSchedule();">Hide Amortization Schedule<\/button><p><i class="arrow down"></i></p>';
+    document.getElementById("scheduleViewButton").innerHTML = '<button type="button" id="btnSchedule" onclick="hideSchedule();">Hide Amortization Schedule<\/button><p><i class="arrow down"></i></p>';
 }
 
 
@@ -161,5 +161,5 @@ function viewSchedule() {
 function hideSchedule() {
     document.getElementById("scheduleDataFrame").style.display = "none"; 
     document.getElementById("scheduleHeader").style.display = "none";
-    document.getElementById("scheduleViewButton").innerHTML = '<button id="btnSchedule" onclick="viewSchedule();">View Amortization Schedule<\/button><p><i class="arrow up"></i></p>';
+    document.getElementById("scheduleViewButton").innerHTML = '<button type="button" id="btnSchedule" onclick="viewSchedule();">View Amortization Schedule<\/button><p><i class="arrow up"></i></p>';
 }
