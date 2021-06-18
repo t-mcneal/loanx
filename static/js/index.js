@@ -26,7 +26,7 @@ $(document).ready(function() {
 
 /**
  * Parses both the monthly payment calculator and Explore section forms. The Explore 
- * form allows the user to inlude an extra dollar amount to their monthly payments
+ * form allows the user to add an extra dollar amount to their monthly payments
  * to explore paying their loan off quicker. The form values are sent to the server, 
  * and the server returns the required monthly payment amount, increased monthly 
  * payment amount, an HTML formatted table of the amortization schedule, and details 
