@@ -24,7 +24,6 @@ $(document).ready(function() {
 });
 
 
-
 /**
  * Parses both the monthly payment calculator and Explore section forms. The Explore 
  * form allows the user to inlude an extra dollar amount to their monthly payments
@@ -53,6 +52,7 @@ $(document).ready(function() {
     });
 });
 
+
 /**
  * Handles showing and hiding the Explore section.
  */
@@ -70,6 +70,7 @@ $(document).ready(function() {
         }
     });
 });
+
 
 /**
  * Limits key presses to numbers and other needed keys for the input fields.
@@ -100,6 +101,7 @@ $(document).ready(function(){
         }  
     });  
 }); 
+
 
 /**
  * Formats numbers for the input fields.
@@ -150,6 +152,7 @@ function viewSchedule() {
     document.getElementById("scheduleHeader").style.display = "block";
     document.getElementById("scheduleViewButton").innerHTML = '<button id="btnSchedule" onclick="hideSchedule();">Hide Amortization Schedule<\/button><p><i class="arrow down"></i></p>';
 }
+
 
 /**
  * Hides the amortization schedule and changes the text of its related view button.
