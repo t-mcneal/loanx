@@ -13,7 +13,7 @@ $(document).ready(function() {
             interestRate: $("#txtInterestRate").val().replace(/[*,]/g, ""),
             yearsToRepay: $("#txtYearsToRepay").val().replace(/[*,]/g, "")
         }, function(data) {
-            $("#monthlyPayment").html("$" + data.result.toFixed(2));
+            $("#monthlyPayment").html("$" + data.result);
             $("#scheduleTable").html('<h2 id="scheduleHeader">Amortization Schedule<h2>' + data.schedule);
             $("#txtExtraPayment").val("");
             $("#payDetails").html("");
@@ -42,7 +42,7 @@ $(document).ready(function() {
             yearsToRepay: $("#txtYearsToRepay").val().replace(/[*,]/g, ""),
             extraPayment: $("#txtExtraPayment").val().replace(/[*,]/g, "")
         }, function(data) {
-            $("#monthlyPayment").html("$" + data.result.toFixed(2));
+            $("#monthlyPayment").html("$" + data.result);
             $("#scheduleTable").html('<h2 id="scheduleHeader">Amortization Schedule<h2>' + data.schedule);
             $("#payDetails").html('<p class="overview exploreOverview">Your monthly payment is $' + data.originalPayment + 
                 ". By paying extra, " + data.details + '</p>');

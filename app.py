@@ -22,7 +22,7 @@ def get_monthly_payment():
     payment = getMonPayment(loanAmount, interestRate, yearsToRepay)
     studentLoan = StudentLoan(loanAmount, interestRate, payment, yearsToRepay)
     loanSchedule = studentLoan.getSchedule().to_html(index=False, table_id='scheduleDataFrame')
-    return jsonify(result=payment, schedule=loanSchedule)
+    return jsonify(result=f'{payment:,.2f}', schedule=loanSchedule)
 
 
 
@@ -37,7 +37,7 @@ def get_explore_payment():
     studentLoan = StudentLoan(loanAmount, interestRate, increasedPayment, yearsToRepay)
     loanSchedule = studentLoan.getSchedule().to_html(index=False, table_id='scheduleDataFrame')
     earlyPayoff = studentLoan.getRepayTime().lower()
-    return jsonify(result=increasedPayment, schedule=loanSchedule, details=earlyPayoff, originalPayment=payment)
+    return jsonify(result=f'{increasedPayment:,.2f}', schedule=loanSchedule, details=earlyPayoff, originalPayment=f'{payment:,.2f}')
 
 
 def getMonPayment(loan, intRate, years):
