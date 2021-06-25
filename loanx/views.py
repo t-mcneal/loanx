@@ -1,12 +1,10 @@
-from flask import Flask, jsonify, render_template, request
+from loanx import app
+from flask import jsonify, render_template, request
 import math
 import numpy as np
 import pandas as pd
 import json
 from typing import List
-
-
-app = Flask(__name__)
 
 
 @app.route('/', methods=['GET', 'POST'])
