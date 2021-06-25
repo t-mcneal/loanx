@@ -10,10 +10,10 @@ class StudentLoan(object):
         """The constructor.
 
         Keyword arguments:
-        loan -- student loan amount (default 1000)
-        intRate -- interest rate (default 0.001)
-        payment -- monthly payment amount (default 100)
-        years -- years to repay loan (default 1)
+        loan -- student loan amount
+        intRate -- interest rate
+        payment -- monthly payment amount
+        years -- years to repay loan
         """
         self.__loan = loan
         self.__intRate = intRate
