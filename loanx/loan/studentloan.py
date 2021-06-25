@@ -2,12 +2,11 @@ from .monthly_payment_calc import MonthlyPaymentCalc
 import math
 import numpy as np
 import pandas as pd
-from typing import List
 
 
 class StudentLoan(object):
 
-    def __init__(self, loan=1000, intRate=0.001, payment=100, years=1):
+    def __init__(self, loan: float, intRate: float, payment: float, years:int) -> None:
         """The constructor.
 
         Keyword arguments:
@@ -22,43 +21,43 @@ class StudentLoan(object):
         self.__payment = payment
         self.__paymentCalc = MonthlyPaymentCalc()
 
-    def setLoan(self, value):
+    def setLoan(self, value: float) -> None:
         """Set the loan amount"""
         self.__loan = value
 
-    def setIntRate(self, value):
+    def setIntRate(self, value: float) -> None:
         """Set the interest rate"""
         self.__intRate = value
 
-    def setYears(self, value):
+    def setYears(self, value: int) -> None:
         """Set the number of years to repay the loan"""
         self.__years = value
     
-    def getLoan(self):
+    def getLoan(self) -> float:
         """Get the loan amount"""
         return self.__loan
 
-    def getIntRate(self):
+    def getIntRate(self) -> float:
         """Get the interest rate"""
         return self.__intRate
     
-    def getYears(self):
+    def getYears(self) -> int:
         """Get the number of years to repay the loan"""
         return self.__years
     
-    def getPayment(self):
+    def getPayment(self) -> float:
         """Get the monthly payment amount"""
         return self.__paymentCalc.calculate(self.__loan, self.__intRate, self.__years)
     
     
-    # List of variables names in the methods below:
+    # List of variable names in the methods below:
     #
     # pb -- Principal Balance
     # intPaid -- Interest Paid
     # prinPaid -- Principal Paid
     # nb -- New Balance
 
-    def getRepayTime(self):
+    def getRepayTime(self) -> str:
         """Return time it will take to repay loan"""
         nb = self.__loan
         lastMonth = self.__years * 12
@@ -77,7 +76,7 @@ class StudentLoan(object):
     # NumPy and Pandas is used in the getSchedule() method
     # below to create a data frame. The created data frame
     # is an amortization schedule.
-    def getSchedule(self):
+    def getSchedule(self) -> pd.DataFrame:
         """Return loan amortization schedule"""
         pd.set_option('max_rows', 360)
         nb = self.__loan
@@ -117,7 +116,7 @@ class StudentLoan(object):
         return df
 
     # Private Method
-    def __getNewBalance(self, pb):
+    def __getNewBalance(self, pb: float) -> float:
         """Return new principal balance of loan after making a payment.
 
         Keyword arguments:
@@ -129,28 +128,29 @@ class StudentLoan(object):
         return nb
 
     # Private Method
-    def __getPayDetails(self, month):
+    def __getPayDetails(self, month: int) -> str:
         """Return details of payment duration.
 
         Keyword arguements:
         month -- number of months it will take to repay loan
         """
-        return f'''The ${self.__loan:,.2f} loan will take {math.floor(month / 12)} years 
-and {month % 12} months to repay with an increased monthly payment of ${self.__payment:,.2f}.'''
+        return f"""The ${self.__loan:,.2f} loan will take {math.floor(month / 12)} years 
+                and {month % 12} months to repay with an increased monthly payment 
+                of ${self.__payment:,.2f}."""
 
     # Private Method
-    def __getIncreasePay(self):
+    def __getIncreasePay(self) -> str:
         """Return suggestion to increase monthly payment"""
         mPay = self.__getMonPayment(self.__loan, self.__intRate, self.__years)
         word = 'year'
         if self.__years > 1:
             word = word + 's'
-        return f'''The ${self.__loan:,.2f} loan will take over {self.__years} years to repay
-with a monthly payment of ${self.__payment:,.2f}. \n\nIncrease monthly payment to ${mPay:,.2f} to repay the loan 
-within {self.__years} {word}.'''
+        return f"""The ${self.__loan:,.2f} loan will take over {self.__years} years to repay
+                with a monthly payment of ${self.__payment:,.2f}. \n\nIncrease monthly payment 
+                to ${mPay:,.2f} to repay the loan within {self.__years} {word}."""
 
     # Private Method
-    def __getMonPayment(self, loan, intRate, years):
+    def __getMonPayment(self, loan: float, intRate: float, years: int) -> float:
         """Return monthly payment amount.
 
         Keyword arguments:
@@ -160,17 +160,16 @@ within {self.__years} {word}.'''
         """
         return self.__paymentCalc.calculate(loan, intRate, years)
 
-    def __repr__(self):
+    def __repr__(self) -> None:
         """Representation of StudentLoan object"""
-        print(
-            f'StudentLoan({self.__loan}, {self.__intRate}, {self.__payment}, {self.__years})')
+        print(f'StudentLoan({self.__loan}, {self.__intRate}, {self.__payment}, {self.__years})')
 
-    def __str__(self):
+    def __str__(self) -> None:
         """String representation of StudentLoan object"""
         word = 'year'
         if self.__years > 1:
             word = word + 's'
-        print(f'''The ${self.__loan:,.2f} student loan has an interest rate 
-of {self.__intRate * 100:.2f}% and monthly payment of ${self.__payment:,.2f}.''')
+        print(f"""The ${self.__loan:,.2f} student loan has an interest rate 
+                of {self.__intRate * 100:.2f}% and monthly payment of ${self.__payment:,.2f}.""")
         print()
         print(f'The loan must be repaid within {self.__years} {word}.')

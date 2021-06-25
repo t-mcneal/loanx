@@ -3,7 +3,7 @@ import math
 class MonthlyPaymentCalc(object):
 
     @staticmethod
-    def calculate(loan, intRate, years):
+    def calculate(loan: float, intRate: float, years: int) -> float:
         """Return monthly payment amount.
 
         Keyword arguments:
