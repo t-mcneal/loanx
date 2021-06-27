@@ -1,8 +1,9 @@
+import os
 from loanx.loan.amort_schedule import AmortizationSchedule
 from loanx import app
 from .loan.studentloan import StudentLoan
 from .explore_feature.extra_pay_schedule import ExtraPaymentSchedule
-from flask import jsonify, render_template, request
+from flask import jsonify, render_template, request, url_for
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -36,3 +37,8 @@ def get_explore_payment():
     loanSchedule = extraPaySchedule.getSchedule().to_html(index=False, table_id='scheduleDataFrame')
     earlyPayoff = extraPaySchedule.getRepayTime().lower()
     return jsonify(result=f'{increasedPayment:,.2f}', schedule=loanSchedule, details=earlyPayoff, originalPayment=f'{payment:,.2f}')
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('page_not_found.html'), 404

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/page_not_found.css') }}">
+{% endblock %}
+
+{% block main %}
+    <h2 id="notFound">Page Not Found</h1>
+
+    <p id="sorryMessage">Sorry, we couldn't find what you are looking for.
+        Come visit our <a id="homepage" href="{{ url_for('home') }}">homepage</a> :)</p>
+{% endblock %}
