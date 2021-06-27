@@ -19,7 +19,7 @@ class ExtraPaymentSchedule(AmortizationSchedule):
     ##
 
     def getRepayTime(self) -> str:
-        """Return the time in years and months it will take to repay loan"""
+        """Returns the time in years and months it will take to repay a loan"""
         nb = self.getLoan()
         lastMonth = self.getYears() * 12
         for i in range(lastMonth):
@@ -34,10 +34,10 @@ class ExtraPaymentSchedule(AmortizationSchedule):
 
     # Private Method
     def __getNewBalance(self, pb: float) -> float:
-        """Return new principal balance of loan after making a payment.
+        """Returns the new principal balance of a loan after making a payment.
 
-        Keyword arguments:
-        pb -- principal balance
+        Args:
+            pb: principal balance
         """
         intPaid = self.getIntRate() / 12 * pb
         prinPaid = self.getPayment() - intPaid
@@ -46,10 +46,10 @@ class ExtraPaymentSchedule(AmortizationSchedule):
 
     # Private Method
     def __getPayDetails(self, month: int) -> str:
-        """Return details of payment duration.
+        """Returns details of payment duration.
 
-        Keyword arguements:
-        month -- number of months it will take to repay loan
+        Args:
+            month: number of months it will take to repay loan
         """
         return f"""The ${self.getLoan():,.2f} loan will take {math.floor(month / 12)} years 
                 and {month % 12} months to repay with an increased monthly payment 
@@ -57,7 +57,7 @@ class ExtraPaymentSchedule(AmortizationSchedule):
 
     # Private Method
     def __getIncreasePayDetails(self) -> str:
-        """Return suggestion to increase monthly payment"""
+        """Returns suggestion to increase monthly payment"""
         mPay = self.__paymentCalc.calculate(self.getLoan(), self.getIntRate(), self.getYears())
         word = 'year'
         if self.getYears() > 1:

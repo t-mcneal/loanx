@@ -7,11 +7,11 @@ class AmortizationSchedule:
     def __init__(self, loan: float, intRate: float, payment: float, years:int) -> None:
         """The constructor.
 
-        Keyword arguments:
-        loan -- student loan amount
-        intRate -- interest rate
-        payment -- monthly payment amount
-        years -- years to repay loan
+        Args:
+            loan: student loan amount
+            intRate: interest rate
+            payment: monthly payment amount
+            years: years to repay loan
         """
         if loan <= 0:
             raise ValueError("A loan amount must be greater than 0.")
@@ -42,19 +42,19 @@ class AmortizationSchedule:
         self.__payment = value
     
     def getLoan(self) -> float:
-        """Get the loan amount"""
+        """Returns the loan amount"""
         return self.__loan
 
     def getIntRate(self) -> float:
-        """Get the interest rate"""
+        """Returns the interest rate"""
         return self.__intRate
     
     def getYears(self) -> int:
-        """Get the number of years to repay the loan"""
+        """Returns the number of years to repay the loan"""
         return self.__years
     
     def getPayment(self) -> float:
-        """Get the monthly payment amount"""
+        """Returns the monthly payment amount"""
         return self.__payment
 
 
@@ -62,7 +62,7 @@ class AmortizationSchedule:
     # below to create a data frame. The created data frame
     # is an amortization schedule.
     def getSchedule(self) -> pd.DataFrame:
-        """Return loan amortization schedule"""
+        """Returns the amortization schedule of a loan"""
         pd.set_option('max_rows', 360)
         nb = self.__loan
         payment = self.__payment
@@ -99,5 +99,3 @@ class AmortizationSchedule:
                         'Interest Paid', 'Principal Paid', 'New Balance']
         df = pd.DataFrame(data=userData, columns=column_names)
         return df
-
-

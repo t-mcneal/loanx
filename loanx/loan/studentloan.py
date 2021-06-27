@@ -8,10 +8,10 @@ class StudentLoan:
     def __init__(self, loan: float, intRate: float, years:int) -> None:
         """The constructor.
 
-        Keyword arguments:
-        loan -- student loan amount
-        intRate -- interest rate
-        years -- years to repay loan
+        Args:
+            loan: student loan amount
+            intRate: interest rate
+            years: years to repay loan
         """
         if loan <= 0:
             raise ValueError("A loan amount must be greater than 0.")
@@ -38,23 +38,23 @@ class StudentLoan:
         self.__years = value
     
     def getLoan(self) -> float:
-        """Get the loan amount"""
+        """Returns the loan amount"""
         return self.__loan
 
     def getIntRate(self) -> float:
-        """Get the interest rate"""
+        """Returns the interest rate"""
         return self.__intRate
     
     def getYears(self) -> int:
-        """Get the number of years to repay the loan"""
+        """Returns the number of years to repay the loan"""
         return self.__years
     
     def getPayment(self) -> float:
-        """Get the monthly payment amount"""
+        """Returns the monthly payment amount"""
         return self.__payment
 
     def getSchedule(self) -> pd.DataFrame:
-        """Return loan amortization schedule"""
+        """Returns the loan's amortization schedule"""
         return self.__amortSchedule.getSchedule()
 
     def __repr__(self) -> None:

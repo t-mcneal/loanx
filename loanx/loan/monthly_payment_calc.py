@@ -5,12 +5,12 @@ class MonthlyPaymentCalc:
 
     @staticmethod
     def calculate(loan: float, intRate: float, years: int) -> float:
-        """Return monthly payment amount.
+        """Returns a loan's monthly payment amount.
 
-        Keyword arguments:
-        loan -- laon amount
-        intRate -- interest rate
-        years -- years to repay loan
+        Args:
+            loan: laon amount
+            intRate: interest rate
+            years: years to repay loan
         """
         if loan <= 0:
             raise ValueError("A loan amount must be greater than 0.")
