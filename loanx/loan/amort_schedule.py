@@ -13,6 +13,14 @@ class AmortizationSchedule:
         payment -- monthly payment amount
         years -- years to repay loan
         """
+        if loan <= 0:
+            raise ValueError("A loan amount must be greater than 0.")
+        elif intRate <= 0:
+            raise ValueError("A loan's interest rate must be greater than 0.")
+        elif years <= 0:
+            raise ValueError("A loan's repayment period must be greater than 0 years.")
+        elif payment <=0:
+            raise ValueError("A loan payment must be greater than 0.")
         self.__loan = loan
         self.__intRate = intRate
         self.__payment = payment

@@ -12,6 +12,12 @@ class MonthlyPaymentCalc:
         intRate -- interest rate
         years -- years to repay loan
         """
+        if loan <= 0:
+            raise ValueError("A loan amount must be greater than 0.")
+        elif intRate <= 0:
+            raise ValueError("A loan's interest rate must be greater than 0.")
+        elif years <= 0:
+            raise ValueError("A loan's repayment period must be greater than 0 years.")
         j = intRate / 12
         n = years * 12
         monPay = loan * (j / (1 - (1 + j)**-n))
