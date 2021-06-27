@@ -1,6 +1,7 @@
 import math
 
-class MonthlyPaymentCalc(object):
+
+class MonthlyPaymentCalc:
 
     @staticmethod
     def calculate(loan: float, intRate: float, years: int) -> float:

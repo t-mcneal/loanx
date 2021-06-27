@@ -1,6 +1,7 @@
+from loanx.loan.amort_schedule import AmortizationSchedule
 from loanx import app
 from .loan.studentloan import StudentLoan
-from .loan.monthly_payment_calc import MonthlyPaymentCalc
+from .explore_feature.extra_pay_schedule import ExtraPaymentSchedule
 from flask import jsonify, render_template, request
 
 
@@ -14,8 +15,9 @@ def get_monthly_payment():
     loanAmount = request.args.get('loanAmount', 0, type=float)
     interestRate = request.args.get('interestRate', 0, type=float) / 100
     yearsToRepay = request.args.get('yearsToRepay', 0, type=int)
-    payment = MonthlyPaymentCalc.calculate(loanAmount, interestRate, yearsToRepay)
-    studentLoan = StudentLoan(loanAmount, interestRate, payment, yearsToRepay)
+
+    studentLoan = StudentLoan(loanAmount, interestRate, yearsToRepay)
+    payment = studentLoan.getPayment()
     loanSchedule = studentLoan.getSchedule().to_html(index=False, table_id='scheduleDataFrame')
     return jsonify(result=f'{payment:,.2f}', schedule=loanSchedule)  # format payment to include a comma
 
@@ -26,9 +28,11 @@ def get_explore_payment():
     interestRate = request.args.get('interestRate', 0, type=float) / 100
     yearsToRepay = request.args.get('yearsToRepay', 0, type=int)
     extraPayment = request.args.get('extraPayment', 0, type=float)
-    payment = MonthlyPaymentCalc.calculate(loanAmount, interestRate, yearsToRepay)
+
+    studentLoan = StudentLoan(loanAmount, interestRate, yearsToRepay)
+    payment = studentLoan.getPayment()
     increasedPayment = payment + extraPayment
-    studentLoan = StudentLoan(loanAmount, interestRate, increasedPayment, yearsToRepay)
-    loanSchedule = studentLoan.getSchedule().to_html(index=False, table_id='scheduleDataFrame')
-    earlyPayoff = studentLoan.getRepayTime().lower()
+    extraPaySchedule = ExtraPaymentSchedule(loanAmount, interestRate, increasedPayment, yearsToRepay)
+    loanSchedule = extraPaySchedule.getSchedule().to_html(index=False, table_id='scheduleDataFrame')
+    earlyPayoff = extraPaySchedule.getRepayTime().lower()
     return jsonify(result=f'{increasedPayment:,.2f}', schedule=loanSchedule, details=earlyPayoff, originalPayment=f'{payment:,.2f}')
