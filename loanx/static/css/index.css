@@ -1,3 +1,28 @@
+.flex-container {
+    display: flex;
+}
+
+.flex-item-left, .flex-item-right {
+    flex: 50%;
+}
+
+@media (max-width: 800px) {
+    .flex-item-right, .flex-item-left {
+        flex: 50%;
+    }
+
+    .overview {
+        width: 100%;
+    }
+
+    #calcBox {
+        border: solid;
+        border-color: #D3D3D3;
+        border-width: thin;
+        background: #000000;
+    }
+}
+
 .overview {
     width: 55%;
     margin-bottom: 40px;

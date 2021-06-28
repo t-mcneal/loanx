@@ -4,36 +4,6 @@ body {
     padding: 0;
 }
 
-.flex-container {
-    display: flex;
-    flex-flow: row nowrap;
-}
-
-.flex-time-right {
-    flex: 50%;
-}
-
-.flex-time-left {
-    flex: 50%;
-}
-
-@media (max-width: 800px) {
-    .flex-item-right, .flex-item-left {
-        flex: 100%;
-    }
-
-    .overview {
-        width: 100%;
-    }
-
-    #calcBox {
-        border: solid;
-        border-color: #D3D3D3;
-        border-width: thin;
-        background: #000000
-    }
-}
-
 main {
     margin: 50px;
 }
