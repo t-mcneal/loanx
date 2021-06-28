@@ -22,8 +22,6 @@ class StudentLoan:
         self.__loan = loan
         self.__intRate = intRate
         self.__years = years
-        self.__payment = MonthlyPaymentCalc.calculate(self.__loan, self.__intRate, self.__years)
-        self.__amortSchedule = AmortizationSchedule(loan, intRate, self.__payment, years)
 
     def setLoan(self, value: float) -> None:
         """Set the loan amount"""
@@ -51,15 +49,21 @@ class StudentLoan:
     
     def getPayment(self) -> float:
         """Returns the monthly payment amount"""
-        return self.__payment
+        return MonthlyPaymentCalc.calculate(self.__loan, self.__intRate, self.__years)
 
     def getSchedule(self) -> pd.DataFrame:
-        """Returns the loan's amortization schedule"""
-        return self.__amortSchedule.getSchedule()
+        """Returns the loan's amortization schedule.
+        
+        An amortization schedule object is instantiated in this method, instead of 
+        the constructor, to future-proof the returned schedule data in case the student 
+        loan class' setter methods are used.
+        """
+        amortSchedule = AmortizationSchedule(self.__loan, self.__intRate, self.getPayment(), self.__years) 
+        return amortSchedule.getSchedule()
 
     def __repr__(self) -> None:
         """Representation of StudentLoan object"""
-        print(f'StudentLoan({self.__loan}, {self.__intRate}, {self.__payment}, {self.__years})')
+        print(f'StudentLoan({self.__loan}, {self.__intRate}, {self.getPayment()}, {self.__years})')
 
     def __str__(self) -> None:
         """String representation of StudentLoan object"""
@@ -67,6 +71,6 @@ class StudentLoan:
         if self.__years > 1:
             word = word + 's'
         print(f"""The ${self.__loan:,.2f} student loan has an interest rate 
-                of {self.__intRate * 100:.2f}% and monthly payment of ${self.__payment:,.2f}.""")
+                of {self.__intRate * 100:.2f}% and monthly payment of ${self.getPayment():,.2f}.""")
         print()
         print(f'The loan must be repaid within {self.__years} {word}.')
