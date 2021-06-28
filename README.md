@@ -1,4 +1,4 @@
-# LoanX
+# LoanX Calculator
 
 LoanX is a student loan payment calculator developed with Python that also creates an amortization schedule to help borrowers see monthly payment breakdowns. Designed using the Flask web framework, the calculator web application implements a dynamic table with Python’s NumPy and Pandas libraries to visualize the schedule data. 
 
