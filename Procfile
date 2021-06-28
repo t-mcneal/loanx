@@ -1,1 +1,1 @@
-web: gunicorn app:loanx
+web: gunicorn -b :$PORT app:loanx
