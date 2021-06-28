@@ -19,11 +19,13 @@ h1 {
     font-size: 30px;
     font-weight: 500;
     font-style: italic;
+    color: #4B0082;
 }
 
 h1 a:link {
     text-decoration: none;
     transition-duration: 0.3s;
+    color: #800080;
 }
 
 h1 a:active {
