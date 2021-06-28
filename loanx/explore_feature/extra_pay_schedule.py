@@ -7,7 +7,6 @@ class ExtraPaymentSchedule(AmortizationSchedule):
 
     def __init__(self, loan: float, intRate: float, payment: float, years:int) -> None:
         super().__init__(loan, intRate, payment, years)
-        self.__paymentCalc = MonthlyPaymentCalc()
 
     ##
     # List of variable names in the methods below:
@@ -58,7 +57,7 @@ class ExtraPaymentSchedule(AmortizationSchedule):
     # Private Method
     def __getIncreasePayDetails(self) -> str:
         """Returns suggestion to increase monthly payment"""
-        mPay = self.__paymentCalc.calculate(self.getLoan(), self.getIntRate(), self.getYears())
+        mPay = MonthlyPaymentCalc.calculate(self.getLoan(), self.getIntRate(), self.getYears())
         word = 'year'
         if self.getYears() > 1:
             word = word + 's'
