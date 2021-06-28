@@ -8,7 +8,7 @@ class AmortizationSchedule:
         """The constructor.
 
         Args:
-            loan: student loan amount
+            loan: loan amount
             intRate: interest rate
             payment: monthly payment amount
             years: years to repay loan
