@@ -3,7 +3,6 @@ click==7.1.2
 Flask==1.1.2
 itsdangerous==1.1.0
 Jinja2==2.11.3
--e git+git@github.com:t-mcneal/loanx.git@0e1fbdbd26f8b9fd5d4b4e80463baf3f0c093dd4#egg=loanx
 MarkupSafe==1.1.1
 numpy==1.20.2
 pandas==1.2.4
