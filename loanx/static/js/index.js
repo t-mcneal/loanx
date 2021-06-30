@@ -4,7 +4,7 @@
  * server, and the server returns the required monthly payment amount and an HTML 
  * formatted table containing the amortization schedule.
  * 
- * @return {boolean} false
+ * @return {boolean} false: keeps page from reloading after request to server
  */
 $(document).ready(function() {
     $("#btnCalculate").click(function() {
@@ -32,7 +32,7 @@ $(document).ready(function() {
  * payment amount, an HTML formatted table of the amortization schedule, and details 
  * of the shorter repayment period.
  * 
- * @return {Boolean} false
+ * @return {boolean} false: keeps page from reloading after request to server
  */
 $(document).ready(function() {
     $("#btnApplyExtraPay").click(function() {
@@ -148,9 +148,11 @@ $(document).ready(function() {
  * @function viewSchedule
  */
 function viewSchedule() {
-    document.getElementById("scheduleDataFrame").style.display = "table"; // data.schedule (returned from server) ID selector is scheduleDataFrame
-    document.getElementById("scheduleHeader").style.display = "block";
-    document.getElementById("scheduleViewButton").innerHTML = '<button type="button" id="btnSchedule" onclick="hideSchedule();">Hide Amortization Schedule<\/button><p><i class="arrow down"></i></p>';
+    if (screen.width > 640) {
+        document.getElementById("scheduleDataFrame").style.display = "table"; // data.schedule (returned from server) ID selector is scheduleDataFrame
+        document.getElementById("scheduleHeader").style.display = "block";
+        document.getElementById("scheduleViewButton").innerHTML = '<button type="button" id="btnSchedule" onclick="hideSchedule();">Hide Amortization Schedule<\/button><p><i class="arrow down"></i></p>';
+    }
 }
 
 

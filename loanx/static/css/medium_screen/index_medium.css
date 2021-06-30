@@ -1,0 +1,78 @@
+@media (max-width: 1007px) {
+    .flex-container {
+        display: flex;
+        flex-flow: row nowrap;
+    }
+    
+    .flex-item-right, .flex-item-left {
+        flex: 50%;
+    }
+    
+    #calcBox {
+        border: solid;
+        border-color: #D3D3D3;
+        border-width: thin;
+        background: linear-gradient(90deg, #F0F0F0 50%, #FFFFFF 50%);
+    }
+    
+    #txtExtraPayment {
+        margin-right: 0;
+    }
+    
+    #txtLoanAmount {
+        margin-right: -8px;
+    }
+    
+    #txtYearsToRepay {
+        margin-right: 0;
+
+    }
+
+    .dollarSign {
+        margin-right: -30px;
+    }
+    
+    #percentSign {
+        margin-left: -115px;
+    }
+    
+    input[type=text] {
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        font-size: 15px;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        padding: 5px;
+        size: 10;
+        border: none;
+        background-color: #ffffff;
+        text-decoration: none;
+        -moz-appearance: textfield;
+        
+    }
+    
+    .input-wrapper {
+        border: solid;
+        border-width: thin;
+        border-color: #D3D3D3;
+        background-color: #ffffff;
+        margin-left: 15px;
+        padding: 10px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    #btnSchedule {
+        width: 220px;
+        margin-top: 65px;
+    }
+    
+    .overview {
+        width: 70%;
+        margin-bottom: 40px;
+        line-height: 1.5em;
+        font-size: 15px;
+    }
+}
+
+
