@@ -7,4 +7,4 @@ Borrowers can also explore how to reach their debt-free goals quicker! Through i
 
 ## Usage 
 
-Click this [link](https://loanxcalculator.herokuapp.com/) to use LoanX.
+Click this [link](https://loanxcalculator.herokuapp.com/) to use LoanX Calculator, which is deployed to Heroku.
