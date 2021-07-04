@@ -143,15 +143,16 @@ $(document).ready(function() {
 });
 
 
-$(document).ready(function() {
-    $("#scheduleViewButton").click(function() {
-        let displayVal = document.getElementById("scheduleDataFrame").style.display;
-        if (displayVal == "none") {
-            viewSchedule();
-        } else {
-            hideSchedule();
-        }
-    });
+/**
+ * Attaches a delegated event handler to the schedule view/hide button.
+ */
+$(document).on("click", "#btnSchedule", function() {
+    let displayVal = document.getElementById("scheduleDataFrame").style.display;
+    if (displayVal == "none") {
+        viewSchedule();
+    } else {
+        hideSchedule();
+    }
 });
 
 
