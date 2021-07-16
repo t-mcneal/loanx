@@ -8,11 +8,13 @@ from flask import jsonify, render_template, request, url_for
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
+    """Renders the home page of the website"""
     return render_template('index.html')
 
 
 @app.route('/get_monthly_payment', methods=['GET', 'POST'])
 def get_monthly_payment():
+    """Returns a loan's monthly payment amount and amortization schedule in JSON format"""
     loanAmount = request.args.get('loanAmount', 0, type=float)
     interestRate = request.args.get('interestRate', 0, type=float) / 100
     yearsToRepay = request.args.get('yearsToRepay', 0, type=int)
@@ -25,6 +27,9 @@ def get_monthly_payment():
 
 @app.route('/get_explore_payment', methods=['GET', 'POST'])
 def get_explore_payment():
+    """Returns a loan's monthly payment amount, amortization schedule, payoff details, 
+        and increased payment amount in JSON format.
+    """
     loanAmount = request.args.get('loanAmount', 0, type=float)
     interestRate = request.args.get('interestRate', 0, type=float) / 100
     yearsToRepay = request.args.get('yearsToRepay', 0, type=int)
@@ -41,4 +46,5 @@ def get_explore_payment():
 
 @app.errorhandler(404)
 def page_not_found(error):
+    """Renders a webpage dedicated to 404 Page Not Found Error"""
     return render_template('page_not_found.html'), 404
