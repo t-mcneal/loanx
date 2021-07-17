@@ -1,18 +1,17 @@
-import os
-from loanx.loan.amort_schedule import AmortizationSchedule
 from loanx import app
 from .loan.studentloan import StudentLoan
+from .loan.amort_schedule import AmortizationSchedule
 from .explore_feature.extra_pay_schedule import ExtraPaymentSchedule
-from flask import jsonify, render_template, request, url_for
+from flask import jsonify, render_template, request
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def home():
-    """Renders the home page of the website"""
+    """Renders the homepage of the website"""
     return render_template('index.html')
 
 
-@app.route('/get_monthly_payment', methods=['GET', 'POST'])
+@app.route('/get_monthly_payment', methods=['GET'])
 def get_monthly_payment():
     """Returns a loan's monthly payment amount and amortization schedule in JSON format"""
     loanAmount = request.args.get('loanAmount', 0, type=float)
@@ -21,11 +20,12 @@ def get_monthly_payment():
 
     studentLoan = StudentLoan(loanAmount, interestRate, yearsToRepay)
     payment = studentLoan.getPayment()
-    loanSchedule = studentLoan.getSchedule().to_html(index=False, table_id='scheduleDataFrame')
-    return jsonify(result=f'{payment:,.2f}', schedule=loanSchedule)  # format payment to include a comma
+    amortSchedule = AmortizationSchedule(studentLoan)
+    scheduleHTML = amortSchedule.getSchedule().to_html(index=False, table_id='scheduleDataFrame')
+    return jsonify(result=f'{payment:,.2f}', schedule=scheduleHTML)  # format payment to include a comma
 
 
-@app.route('/get_explore_payment', methods=['GET', 'POST'])
+@app.route('/get_explore_payment', methods=['GET'])
 def get_explore_payment():
     """Returns a loan's monthly payment amount, amortization schedule, payoff details, 
         and increased payment amount in JSON format.
@@ -38,10 +38,10 @@ def get_explore_payment():
     studentLoan = StudentLoan(loanAmount, interestRate, yearsToRepay)
     payment = studentLoan.getPayment()
     increasedPayment = payment + extraPayment
-    extraPaySchedule = ExtraPaymentSchedule(loanAmount, interestRate, increasedPayment, yearsToRepay)
-    loanSchedule = extraPaySchedule.getSchedule().to_html(index=False, table_id='scheduleDataFrame')
-    earlyPayoff = extraPaySchedule.getRepayTime().lower()
-    return jsonify(result=f'{increasedPayment:,.2f}', schedule=loanSchedule, details=earlyPayoff, originalPayment=f'{payment:,.2f}')
+    amortSchedule = ExtraPaymentSchedule(studentLoan, extraPayment)
+    scheduleHTML = amortSchedule.getSchedule().to_html(index=False, table_id='scheduleDataFrame')
+    earlyPayoff = amortSchedule.getRepayTime().lower()
+    return jsonify(result=f'{increasedPayment:,.2f}', schedule=scheduleHTML, details=earlyPayoff, originalPayment=f'{payment:,.2f}')
 
 
 @app.errorhandler(404)
