@@ -6,13 +6,20 @@ import math
 
 class ExtraPaymentSchedule(AmortizationSchedule):
 
-    def __init__(self, loan: StudentLoan, extraPay: float) -> None:
+    def __init__(self, loan: StudentLoan, extraPayment: float) -> None:
+        """The constructor.
+
+        Args:
+            loan: student loan object
+            extraPay: additional monthly payment amount
+        """
         super().__init__(loan)
-        self.__extraPay = extraPay
+        self.__extraPayment = extraPayment
     
 
     def getPayment(self) -> float:
-        return super().getPayment() + self.__extraPay
+        """Returns the monthly payment amount"""
+        return super().getPayment() + self.__extraPayment
 
     # List of variable names in the methods below:
     #
