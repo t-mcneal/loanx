@@ -7,6 +7,12 @@ class MonthlyPaymentCalc:
     def calculate(loan: float, intRate: float, years: int) -> float:
         """Returns a loan's monthly payment amount.
 
+        After calculating the monthly payment, the dollar amount can
+        equal long floating point values (i.e. 105.12893837). This method
+        rounds to two decimal places to present the number as a normal 
+        dollar amount. The rounding needs to be very accurate and 
+        consider financial portions that are less than 1 cent. 
+
         Args:
             loan: laon amount
             intRate: interest rate
