@@ -1,7 +1,4 @@
 from .monthly_payment_calc import MonthlyPaymentCalc
-from .amort_schedule import AmortizationSchedule
-import pandas as pd
-
 
 class StudentLoan:
 
@@ -23,11 +20,11 @@ class StudentLoan:
         self.__intRate = intRate
         self.__years = years
 
-    def setLoan(self, value: float) -> None:
+    def setLoanAmount(self, value: float) -> None:
         """Set the loan amount"""
         self.__loan = value
 
-    def setIntRate(self, value: float) -> None:
+    def setInterestRate(self, value: float) -> None:
         """Set the interest rate"""
         self.__intRate = value
 
@@ -35,11 +32,11 @@ class StudentLoan:
         """Set the number of years to repay the loan"""
         self.__years = value
     
-    def getLoan(self) -> float:
+    def getLoanAmount(self) -> float:
         """Returns the loan amount"""
         return self.__loan
 
-    def getIntRate(self) -> float:
+    def getInterestRate(self) -> float:
         """Returns the interest rate"""
         return self.__intRate
     
@@ -50,16 +47,6 @@ class StudentLoan:
     def getPayment(self) -> float:
         """Returns the monthly payment amount"""
         return MonthlyPaymentCalc.calculate(self.__loan, self.__intRate, self.__years)
-
-    def getSchedule(self) -> pd.DataFrame:
-        """Returns the loan's amortization schedule.
-        
-        An amortization schedule object is instantiated in this method, instead of 
-        the constructor, to future-proof the returned schedule data in case the student 
-        loan class' setter methods are used.
-        """
-        amortSchedule = AmortizationSchedule(self.__loan, self.__intRate, self.getPayment(), self.__years) 
-        return amortSchedule.getSchedule()
 
     def __repr__(self) -> None:
         """Representation of StudentLoan object"""
