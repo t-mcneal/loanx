@@ -14,6 +14,21 @@
         border-width: thin;
         background: linear-gradient(90deg, #F0F0F0 50%, #FFFFFF 50%);
     }
+
+    input[type=text] {
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        font-size: 15px;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        padding: 5px;
+        size: 10;
+        border: none;
+        background-color: #ffffff;
+        text-decoration: none;
+        -moz-appearance: textfield;
+        
+    }
     
     #txtExtraPayment {
         margin-right: 0;
@@ -34,21 +49,6 @@
     
     #percentSign {
         margin-left: -115px;
-    }
-    
-    input[type=text] {
-        font-family: 'Roboto', sans-serif;
-        font-weight: bold;
-        font-size: 15px;
-        margin-top: 10px;
-        margin-bottom: 30px;
-        padding: 5px;
-        size: 10;
-        border: none;
-        background-color: #ffffff;
-        text-decoration: none;
-        -moz-appearance: textfield;
-        
     }
     
     .input-wrapper {

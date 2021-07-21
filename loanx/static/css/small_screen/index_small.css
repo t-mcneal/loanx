@@ -18,23 +18,7 @@
         border-width: thin;
         background: linear-gradient(#F0F0F0 25%, #FFFFFF 25%);
     }
-    
-    #txtExtraPayment {
-        margin-right: -8px;
-    }
-    
-    #txtLoanAmount {
-        margin-right: -8px;
-    }
-    
-    #txtYearsToRepay {
-        margin-right: -8px;
-    }
 
-    .dollarSign {
-        margin-right: -30px;
-    }
-    
     input[type=text] {
         font-family: 'Roboto', sans-serif;
         font-weight: bold;
@@ -46,8 +30,27 @@
         border: none;
         background-color: #ffffff;
         text-decoration: none;
-        -moz-appearance: textfield;
-        
+        -moz-appearance: textfield;  
+    }
+    
+    #txtExtraPayment {
+        margin-right: 0;
+    }
+    
+    #txtLoanAmount {
+        margin-right: -8px;
+    }
+    
+    #txtYearsToRepay {
+        margin-right: 0;
+    }
+
+    .dollarSign {
+        margin-right: -30px;
+    }
+    
+    #percentSign {
+        margin-left: -115px;
     }
     
     .input-wrapper {
