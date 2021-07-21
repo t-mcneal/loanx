@@ -20,7 +20,7 @@
     }
     
     #txtExtraPayment {
-        margin-right: 0;
+        margin-right: -8px;
     }
     
     #txtLoanAmount {
@@ -28,16 +28,11 @@
     }
     
     #txtYearsToRepay {
-        margin-right: 0;
-
+        margin-right: -8px;
     }
 
     .dollarSign {
         margin-right: -30px;
-    }
-    
-    #percentSign {
-        margin-left: -115px;
     }
     
     input[type=text] {
