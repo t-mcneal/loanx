@@ -161,11 +161,9 @@ $(document).on("click", "#btnSchedule", function() {
  * @function viewSchedule
  */
 function viewSchedule() {
-    if (screen.width > 640) {
-        document.getElementById("scheduleDataFrame").style.display = "table"; // data.schedule (returned from server) ID selector is scheduleDataFrame
-        document.getElementById("scheduleHeader").style.display = "block";
-        document.getElementById("scheduleViewButton").innerHTML = '<button type="button" id="btnSchedule">Hide Amortization Schedule<\/button><p><i class="arrow down"></i></p>';
-    }
+    document.getElementById("scheduleDataFrame").style.display = "table"; // data.schedule (returned from server) ID selector is scheduleDataFrame
+    document.getElementById("scheduleHeader").style.display = "block";
+    document.getElementById("scheduleViewButton").innerHTML = '<button type="button" id="btnSchedule">Hide Amortization Schedule<\/button><p><i class="arrow down"></i></p>';
 }
 
 
