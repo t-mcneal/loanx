@@ -31,6 +31,7 @@
         background-color: #ffffff;
         text-decoration: none;
         -moz-appearance: textfield;  
+        margin-right: 100px;
     }
     
     #txtExtraPayment {
@@ -45,12 +46,16 @@
         margin-right: 0;
     }
 
+    #txtInterestRate {
+        margin-right: 0px;;
+    }
+
     .dollarSign {
         margin-right: -30px;
     }
     
     #percentSign {
-        margin-left: -115px;
+        margin-left: -15px;
     }
     
     .input-wrapper {
