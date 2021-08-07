@@ -23,18 +23,18 @@
                         <label for="txtLoanAmount">Loan Amount</label><br>
                         <span class="input-wrapper">
                             <span class="sign dollarSign">$</span>
-                            <input type="text" class="number" id="txtLoanAmount" name="loanAmount" placeholder="0.00">
+                            <input type="text" class="number" id="txtLoanAmount" name="loanAmount" oninput="validate(this)" placeholder="0.00">
                         </span>
                         <br>
                         <label for="txtInterestRate">Interest Rate</label><br>
                         <span class="input-wrapper">
-                            <input type="text" class="number" id="txtInterestRate" name="interestRate" placeholder="0">
+                            <input type="text" class="number" id="txtInterestRate" oninput="validate(this)" name="interestRate" placeholder="0">
                             <span class="sign" id="percentSign">%</span>
                         </span>
                         <br>
                         <label for="txtYearsToRepay">Loan Term in Years</label><br>
                         <span class="input-wrapper">
-                            <input type="text" class="number" id="txtYearsToRepay" name="yearsToRepay" placeholder="0">
+                            <input type="text" class="number" id="txtYearsToRepay" name="yearsToRepay" oninput="validate(this)" placeholder="0">
                         </span>
                         <br>
                         <button type="submit" id="btnCalculate">CALCULATE</button>
@@ -78,7 +78,7 @@
                     <label for="txtExtraPayment">Extra Payment Amount</label><br>
                     <span class="input-wrapper">
                         <span class="sign dollarSign">$</span>
-                        <input type="text" class="number" id="txtExtraPayment" name="extraPayment" placeholder="0.00">
+                        <input type="text" class="number" id="txtExtraPayment" name="extraPayment" oninput="validate(this)" placeholder="0.00">
                     </span>
                     <button type="submit" id="btnApplyExtraPay">Apply Extra Payment</button>
                 </form>

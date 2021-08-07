@@ -128,20 +128,11 @@ $(document).ready(function() {
                 if ((ascii < 48 || ascii > 57) && !allowedASCII.has(ascii)) {
                     return value.slice(0, i);
                 }
-    
-                // limit input field to two decimal places
-                if (value[i] == ".") {
-                    let remainder = value.slice(i + 1);
-                    if (remainder.length > 2) {
-                        return value.slice(0, i + 3);
-                    }
-                }
             }
             return value.replace(/[*,]/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         });
     })
 });
-
 
 /**
  * Attaches a delegated event handler to the schedule view/hide button.
@@ -175,4 +166,20 @@ function hideSchedule() {
     document.getElementById("scheduleDataFrame").style.display = "none"; 
     document.getElementById("scheduleHeader").style.display = "none";
     document.getElementById("scheduleViewButton").innerHTML = '<button type="button" id="btnSchedule">View Amortization Schedule<\/button><p><i class="arrow up"></i></p>';
+}
+
+/**
+ * Limits input fields to two decimal places, excluding the input field with 
+ * ID "textYearsToRepay". The excluded input field with ID "textYearsToRepay" 
+ * is, instead, limited to positive whole numbers < 100.
+ * @param {*} e 
+ */
+function validate(e) {
+    let inputId = e.id;
+    let t = e.value;
+    if (inputId == "txtYearsToRepay") {
+        e.value = t.substr(0, 2);
+    } else if (t.includes(".")) {
+        e.value = t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."), 3);
+    }
 }
