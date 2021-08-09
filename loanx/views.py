@@ -2,7 +2,8 @@ from loanx import app
 from .loan.studentloan import StudentLoan
 from .loan.amort_schedule import AmortizationSchedule
 from .explore_feature.extra_pay_schedule import ExtraPaymentSchedule
-from flask import jsonify, render_template, request
+from flask import jsonify, render_template, request, url_for
+import os
 
 
 @app.route('/')
@@ -48,3 +49,23 @@ def get_explore_payment():
 def page_not_found(error):
     """Renders a webpage dedicated to 404 Page Not Found Error"""
     return render_template('page_not_found.html'), 404
+
+
+@app.context_processor
+def override_url_for():
+    return dict(url_for=dated_url_for)
+
+
+def dated_url_for(endpoint, **values):
+    """Adds last modified timestamp to static files.
+    
+    Keyword arguments:
+    endpoint -- directory of files to add time stamps
+    **values -- keyworded, variable-length argument list of files in the endpoint directory
+    """
+    if endpoint == 'static':
+        filename = values.get('filename', None)
+        if filename:
+            filePath = os.path.join(app.root_path, endpoint, filename)
+            values['q'] = int(os.stat(filePath).st_mtime)
+    return url_for(endpoint, **values)
