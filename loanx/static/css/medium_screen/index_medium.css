@@ -27,11 +27,10 @@
         background-color: #ffffff;
         text-decoration: none;
         -moz-appearance: textfield;
-        
     }
     
     #txtExtraPayment {
-        margin-right: 0;
+        margin-right: -8px;
     }
     
     #txtLoanAmount {
