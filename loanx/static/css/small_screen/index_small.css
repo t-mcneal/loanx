@@ -67,6 +67,10 @@
         font-size: 15px;
         font-weight: bold;
     }
+
+    #btnApplyExtraPay {
+        display: block;
+    }
     
     .overview {
         width: 95%;
