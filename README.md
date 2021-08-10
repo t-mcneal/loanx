@@ -34,7 +34,9 @@ Borrowers can also explore how to reach their debt-free goals quicker! Through i
     Once you have created the virtual environment, start the environment via the command line, then enter the following command line syntax to install project requirements.
     
     ```
-    $ pip install -r requirements.txt
+    $ pip install numpy
+    $ pip install pandas
+    $ pip install typing-extensions
     ``` 
     
 ## Usage
