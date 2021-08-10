@@ -30,13 +30,18 @@ Borrowers can also explore how to reach their debt-free goals quicker! Through i
     >> **Note:** The Flask guide uses the command line. If you are not familiar with terminal commands, read this 
     >> [blog](https://scotch.io/bar-talk/10-need-to-know-mac-terminal-commands) by scotch.io to learn 10 commonly
     >> used terminal commands - #10 is a fun one!
+
+    Once you have created the virtual environment, start the environment via the command line, then enter the following command line syntax to install project requirements.
+    
+    ```
+    $ pip install -r requirements.txt
+    ``` 
     
 ## Usage
 
 Next, you will need to run the LoanX Flask application in your newly created virtual environment.
-Use the command line to access the project directory and start the virtual environment. Once you have
-enabled the virtual environment, you can now run the app to start a local server using the 
-following command line syntax.
+Once you have enabled the virtual environment and installed the requirements, you can now run the 
+app to start a local server using the following command line syntax.
 
 ```
 $ export FLASK_APP=loanx
