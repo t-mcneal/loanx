@@ -8,7 +8,7 @@
  */
 $(document).ready(function() {
     $("#btnCalculate").click(function() {
-        $.getJSON($SCRIPT_ROOT + "/get_monthly_payment", {
+        $.getJSON($SCRIPT_ROOT + "/api/v1/payment/regular", {
             loanAmount: $("#txtLoanAmount").val().replace(/[*,]/g, ""),
             interestRate: $("#txtInterestRate").val().replace(/[*,]/g, ""),
             yearsToRepay: $("#txtYearsToRepay").val().replace(/[*,]/g, "")
@@ -36,7 +36,7 @@ $(document).ready(function() {
  */
 $(document).ready(function() {
     $("#btnApplyExtraPay").click(function() {
-        $.getJSON($SCRIPT_ROOT + "/get_explore_payment", {
+        $.getJSON($SCRIPT_ROOT + "/api/v1/payment/explore", {
             loanAmount: $("#txtLoanAmount").val().replace(/[*,]/g, ""),
             interestRate: $("#txtInterestRate").val().replace(/[*,]/g, ""),
             yearsToRepay: $("#txtYearsToRepay").val().replace(/[*,]/g, ""),

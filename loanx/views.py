@@ -12,7 +12,7 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/get_monthly_payment', methods=['GET'])
+@app.route('/api/v1/payment/regular', methods=['GET'])
 def get_monthly_payment():
     """Returns a loan's monthly payment amount and amortization schedule in JSON format"""
     loanAmount = request.args.get('loanAmount', 0, type=float)
@@ -26,7 +26,7 @@ def get_monthly_payment():
     return jsonify(result=f'{payment:,.2f}', schedule=scheduleHTML)  # format payment to include a comma
 
 
-@app.route('/get_explore_payment', methods=['GET'])
+@app.route('/api/v1/payment/explore', methods=['GET'])
 def get_explore_payment():
     """Returns a loan's monthly payment amount, amortization schedule, payoff details, 
         and increased payment amount in JSON format.

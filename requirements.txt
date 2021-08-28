@@ -16,3 +16,4 @@ six==1.15.0
 toml==0.10.2
 typing-extensions==3.10.0.0
 Werkzeug==1.0.1
+Flask_Cors==3.0.10
