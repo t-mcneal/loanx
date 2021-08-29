@@ -2,7 +2,7 @@ from loanx import app
 from .loan.studentloan import StudentLoan
 from .loan.amort_schedule import AmortizationSchedule
 from .explore_feature.extra_pay_schedule import ExtraPaymentSchedule
-from flask import jsonify, render_template, request, url_for
+from flask import jsonify, render_template, request, url_for, redirect
 import os
 
 
@@ -12,12 +12,14 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/api/v1/payment/regular', methods=['GET'])
+@app.route('/api/v1/payment/regular', methods=['GET', 'POST'])
 def get_monthly_payment():
     """Returns a loan's monthly payment amount and amortization schedule in JSON format"""
-    loanAmount = request.args.get('loanAmount', 0, type=float)
-    interestRate = request.args.get('interestRate', 0, type=float) / 100
-    yearsToRepay = request.args.get('yearsToRepay', 0, type=int)
+    if request.method != 'POST':
+        return redirect(url_for('home'))
+    loanAmount = float(request.form['loanAmount'])
+    interestRate = float(request.form['interestRate']) / 100
+    yearsToRepay = int(request.form['yearsToRepay'])
 
     studentLoan = StudentLoan(loanAmount, interestRate, yearsToRepay)
     payment = studentLoan.getPayment()
@@ -26,15 +28,17 @@ def get_monthly_payment():
     return jsonify(result=f'{payment:,.2f}', schedule=scheduleHTML)  # format payment to include a comma
 
 
-@app.route('/api/v1/payment/explore', methods=['GET'])
+@app.route('/api/v1/payment/explore', methods=['GET', 'POST'])
 def get_explore_payment():
     """Returns a loan's monthly payment amount, amortization schedule, payoff details, 
         and increased payment amount in JSON format.
     """
-    loanAmount = request.args.get('loanAmount', 0, type=float)
-    interestRate = request.args.get('interestRate', 0, type=float) / 100
-    yearsToRepay = request.args.get('yearsToRepay', 0, type=int)
-    extraPayment = request.args.get('extraPayment', 0, type=float)
+    if request.method != 'POST':
+        return redirect(url_for('home'))
+    loanAmount = float(request.form['loanAmount'])
+    interestRate = float(request.form['interestRate']) / 100
+    yearsToRepay = int(request.form['yearsToRepay'])
+    extraPayment = float(request.form['extraPayment'])
 
     studentLoan = StudentLoan(loanAmount, interestRate, yearsToRepay)
     payment = studentLoan.getPayment()
