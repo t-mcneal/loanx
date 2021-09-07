@@ -14,7 +14,7 @@ Borrowers can also explore how to reach their debt-free goals quicker! Through i
 
 1. **Install Python 3**
 
-    If not currently installed on your computer, download and install Python 3 at [Python.org](https://www.python.org/downloads/).
+    If not currently installed on your computer, download and install [Python 3](https://www.python.org/downloads/).
 
 2. **Download Project**
 
