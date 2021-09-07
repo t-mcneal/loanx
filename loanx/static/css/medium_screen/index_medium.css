@@ -16,30 +16,8 @@
     }
 
     input[type=text] {
-        font-family: 'Roboto', sans-serif;
-        font-weight: bold;
-        font-size: 15px;
-        margin-top: 10px;
-        margin-bottom: 30px;
         padding: 5px;
         size: 10;
-        border: none;
-        background-color: #ffffff;
-        text-decoration: none;
-        -moz-appearance: textfield;
-    }
-    
-    #txtExtraPayment {
-        margin-right: -8px;
-    }
-    
-    #txtLoanAmount {
-        margin-right: -8px;
-    }
-    
-    #txtYearsToRepay {
-        margin-right: 0;
-
     }
 
     .dollarSign {
@@ -47,22 +25,19 @@
     }
     
     #percentSign {
-        margin-left: -115px;
+        margin-left: -10px;
     }
     
     .input-wrapper {
-        border: solid;
-        border-width: thin;
-        border-color: #D3D3D3;
-        background-color: #ffffff;
-        margin-left: 15px;
-        padding: 10px;
-        font-size: 15px;
-        font-weight: bold;
+        width: 80%;
+    }
+
+    #btnCalculate {
+        width: 50%;
     }
 
     #btnSchedule {
-        width: 220px;
+        width: 50%;
         margin-top: 65px;
     }
     

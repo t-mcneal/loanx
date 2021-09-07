@@ -20,29 +20,11 @@
     }
 
     input[type=text] {
-        font-family: 'Roboto', sans-serif;
-        font-weight: bold;
-        font-size: 15px;
-        margin-top: 10px;
-        margin-bottom: 30px;
-        padding: 5px;
-        size: 10;
-        border: none;
-        background-color: #ffffff;
-        text-decoration: none;
-        -moz-appearance: textfield;
+       width: 60%;
     }
     
     #txtExtraPayment {
-        margin-right: -8px;
-    }
-    
-    #txtLoanAmount {
-        margin-right: -8px;
-    }
-    
-    #txtYearsToRepay {
-        margin-right: 0;
+        width: 60%;
     }
 
     #txtInterestRate {
@@ -56,19 +38,13 @@
     #percentSign {
         margin-left: -15px;
     }
-    
-    .input-wrapper {
-        border: solid;
-        border-width: thin;
-        border-color: #D3D3D3;
-        background-color: #ffffff;
-        margin-left: 15px;
-        padding: 10px;
-        font-size: 15px;
-        font-weight: bold;
-    }
 
+    #btnCalculate {
+        width: 80%;
+    }
+    
     #btnApplyExtraPay {
+        width: 80%;
         display: block;
     }
     

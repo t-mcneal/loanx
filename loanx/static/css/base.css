@@ -16,7 +16,7 @@ header {
 
 h1 {
     margin-left: 50px;
-    font-size: 30px;
+    font-size: 1.8em;
     font-weight: 500;
     font-style: italic;
     color: #4B0082;
@@ -45,7 +45,7 @@ h1 a:visited {
 }
 
 #wordCalc {
-    font-size: 10px;
+    font-size: 0.2em;
     font-style: normal;
     text-transform: uppercase;
     position: relative;
@@ -60,6 +60,6 @@ footer {
 }
 
 #disclaimer {
-    font-size: 12px;
+    font-size: 0.7em;
     margin-bottom: 30px;
 }

@@ -11,7 +11,7 @@
     width: 55%;
     margin-bottom: 40px;
     line-height: 1.5em;
-    font-size: 15px;
+    font-size: 1em;
 }
 
 #calcBox {
@@ -39,7 +39,7 @@
 
 #txtExtraPayment {
     margin-left: 26px;
-    margin-right: 90px;
+    width: 25%;
 }
 
 #btnApplyExtraPay {
@@ -61,11 +61,11 @@ button {
 }
 
 #btnCalculate {
-    width: 200px;
+    width: 40%;
 }
 
 #btnSchedule {
-    width: 250px;
+    width: 50%;
     margin-top: 100px;
 }
 
@@ -77,10 +77,10 @@ button:hover {
 input[type=text] {
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 1em;
     margin-top: 10px;
     margin-bottom: 30px;
-    margin-right: 100px;
+    width: 50%;
     padding: 8px;
     border: none;
     text-decoration: none;
@@ -95,7 +95,7 @@ input::-webkit-outer-spin-button,
 
 #txtLoanAmount {
     margin-left: 26px;
-    margin-right: 90px;
+    margin-right: -8px;
 }
 
 input[type=text]:focus {
@@ -108,8 +108,8 @@ input[type=text]:focus {
     border-color: #D3D3D3;
     background-color: #ffffff;
     margin-left: 15px;
+    width: 20%;
     padding: 10px;
-    font-size: 15px;
     font-weight: bold;
 }
 
@@ -136,7 +136,7 @@ input[type=text]:focus {
 
 #exploreTop:hover {
     color: green;
-    font-size: 17px;
+    font-size: 1.1em;
 }
 
 #exploreHeader {
@@ -173,7 +173,7 @@ input[type=text]:focus {
 
 #scheduleDataFrame {
     font-family: 'Roboto', sans-serif;
-    font-size: 12px;
+    font-size: 0.7em;
     border-collapse: collapse;
     width: 100%;
 }
@@ -183,7 +183,7 @@ input[type=text]:focus {
         border: 1px solid #DDDDDD;
         padding: 8px;
         text-align: right;
-        font-size: 14px;
+        font-size: 1em;
 }
 
 #scheduleDataFrame th {
@@ -194,16 +194,16 @@ input[type=text]:focus {
 }
 
 #monthlyPayment {
-    font-size: 50px;
+    font-size: 3em;
     font-weight: 900;
 }
 
 #calcHeader {
-    font-size: 40px;
+    font-size: 2em;
 }
 
 h3 {
-    font-size: 25px;
+    font-size: 1.5em;
 }
 
 .arrow {
