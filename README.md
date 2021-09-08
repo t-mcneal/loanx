@@ -59,3 +59,7 @@ This step enables the development environment, including the interactive debugge
 Click this [link](https://loanxcalculator.herokuapp.com/) to visit the LoanX Calculator website, which is deployed to Heroku. 
 
 ![LoanX Screenshot](https://github.com/t-mcneal/loanx/blob/master/readme_images/loanx_screenshot.png)
+
+
+## License
+[MIT](https://github.com/t-mcneal/loanx/blob/master/LICENSE)
