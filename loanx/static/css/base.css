@@ -10,34 +10,35 @@ main {
 
 header {
     margin-bottom: 50px;
-    border-bottom: solid;
-    border-width: thin;
+    padding: 20px;
+    background-color: #283747;
+   
 }
 
-h1 {
+nav {
     margin-left: 50px;
     font-size: 1.8em;
     font-weight: 500;
     font-style: italic;
-    color: #4B0082;
+    color: #FDFEFE;
 }
 
-h1 a:link {
+nav a:link {
     text-decoration: none;
     transition-duration: 0.3s;
-    color: #800080;
+    color: #FDFEFE;
 }
 
-h1 a:active {
+nav a:active {
     color: #32CD32;
 }
 
-h1 a:hover {
+nav a:hover {
     font-size: 40px;
 }
 
-h1 a:visited {
-    color: none;
+nav a:visited {
+    color: #FDFEFE;
 }
 
 #xLetter {
