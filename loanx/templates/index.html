@@ -56,7 +56,7 @@
     <section>
         <div id="exploreBox">
             <div id="exploreTop">
-                <h3 id="exploreHeader">Explore</h2>
+                <h3 id="exploreHeader">Explore</h3>
 
                     <p id="exploreArrow"><i class="arrow up"></i></p>
 
@@ -91,4 +91,8 @@
         <div id="scheduleTable">
         </div> <!--scheduleTable div ends here-->
     </section>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
 {% endblock %}
