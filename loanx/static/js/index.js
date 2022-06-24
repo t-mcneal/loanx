@@ -61,11 +61,11 @@ $(document).ready(function() {
         let displayVal = $("#exploreHidden").css("display");
         if (displayVal == "none") {
             $("#viewExplore").html("Hide Explore");
-            $("#exploreArrow").html('<i class="arrow down"></i>');
+            $("#exploreArrow").html('<i class="arrow up"></i>'); 
             $("#exploreHidden").css("display", "block");
         } else {
             $("#viewExplore").html("View Explore");
-            $("#exploreArrow").html('<i class="arrow up"></i>');
+            $("#exploreArrow").html('<i class="arrow down"></i>'); 
             $("#exploreHidden").css("display", "none");
         }
     });
@@ -154,7 +154,7 @@ $(document).on("click", "#btnSchedule", function() {
 function viewSchedule() {
     document.getElementById("scheduleDataFrame").style.display = "table"; // data.schedule (returned from server) ID selector is scheduleDataFrame
     document.getElementById("scheduleHeader").style.display = "block";
-    document.getElementById("scheduleViewButton").innerHTML = '<button type="button" id="btnSchedule">Hide Amortization Schedule<\/button><p><i class="arrow down"></i></p>';
+    document.getElementById("scheduleViewButton").innerHTML = '<button type="button" id="btnSchedule">Hide Amortization Schedule<\/button><p><i class="arrow up"></i></p>'; 
 }
 
 
@@ -165,7 +165,7 @@ function viewSchedule() {
 function hideSchedule() {
     document.getElementById("scheduleDataFrame").style.display = "none"; 
     document.getElementById("scheduleHeader").style.display = "none";
-    document.getElementById("scheduleViewButton").innerHTML = '<button type="button" id="btnSchedule">View Amortization Schedule<\/button><p><i class="arrow up"></i></p>';
+    document.getElementById("scheduleViewButton").innerHTML = '<button type="button" id="btnSchedule">View Amortization Schedule<\/button><p><i class="arrow down"></i></p>'; 
 }
 
 /**
