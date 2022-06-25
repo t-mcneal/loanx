@@ -6,9 +6,9 @@ Borrowers can also explore how to reach their debt-free goals quicker! Through i
 
 ## Table of Contents
 
-* [Installation](https://github.com/t-mcneal/loanx/blob/master/README.md#installation)
-* [Usage](https://github.com/t-mcneal/loanx/blob/master/README.md#usage)
-* [Website](https://github.com/t-mcneal/loanx/blob/master/README.md#website)
+* [Installation](https://github.com/t-mcneal/loanx/blob/main/README.md#installation)
+* [Usage](https://github.com/t-mcneal/loanx/blob/main/README.md#usage)
+* [Website](https://github.com/t-mcneal/loanx/blob/main/README.md#website)
 
 ## Installation
 
@@ -58,8 +58,8 @@ This step enables the development environment, including the interactive debugge
 
 Click this [link](https://loanxcalculator.herokuapp.com/) to visit the LoanX Calculator website, which is deployed to Heroku. 
 
-![LoanX Screenshot](https://github.com/t-mcneal/loanx/blob/master/readme_images/loanx_screenshot.png)
+![LoanX Screenshot](https://github.com/t-mcneal/loanx/blob/main/readme_images/loanx_screenshot.png)
 
 
 ## License
-[MIT](https://github.com/t-mcneal/loanx/blob/master/LICENSE)
+[MIT](https://github.com/t-mcneal/loanx/blob/main/LICENSE)
