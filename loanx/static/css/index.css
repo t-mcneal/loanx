@@ -57,7 +57,8 @@ button {
     font-weight: bold; 
     background-color: #32CD32;
     border: none;
-    transition-duration: 0.3s;
+    transition-duration: 0.1s;
+    cursor: pointer;
 }
 
 #btnCalculate {
@@ -135,6 +136,10 @@ input[type=text]:focus {
     border-top: none;
 }
 
+#exploreTop {
+    cursor: pointer;
+}
+
 #exploreTop:hover {
     color: green;
     font-size: 1.1em;
@@ -148,7 +153,6 @@ input[type=text]:focus {
 #viewExplore {
     float: right;
     margin-right: 10px;
-    transition-duration: 0.3s;
     font-style: italic;
 }
 
