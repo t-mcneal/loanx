@@ -198,6 +198,10 @@ input[type=text]:focus {
     background-color: #32CD32;
 }
 
+#scheduleDataFrame td {
+    font-weight: 400;
+}
+
 #monthlyPayment {
     font-size: 3em;
     font-weight: 900;
