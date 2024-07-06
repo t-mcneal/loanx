@@ -44,9 +44,7 @@ Once you have enabled the virtual environment and installed the requirements, yo
 app to start a local server using the following command line syntax.
 
 ```
-$ export FLASK_APP=loanx
-$ export FLASK_ENV=development
-$ flask run
+$ export FLASK_APP=loanx && export FLASK_ENV=development && flask run
 ```
 
 This step enables the development environment, including the interactive debugger and reloader, and then starts the server on `http://localhost:5000/`. Copy the server link from the command line, then place it in your browser to access the LoanX Calculator web app.
