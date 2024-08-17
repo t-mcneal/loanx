@@ -12,11 +12,9 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/api/v1/payment/regular', methods=['GET', 'POST'])
+@app.route('/api/v1/payment/regular', methods=['POST'])
 def get_monthly_payment():
     """Returns a loan's monthly payment amount and amortization schedule in JSON format"""
-    if request.method != 'POST':
-        return redirect(url_for('home'))
     loanAmount = float(request.form['loanAmount'])
     interestRate = float(request.form['interestRate']) / 100
     yearsToRepay = int(request.form['yearsToRepay'])
@@ -28,13 +26,11 @@ def get_monthly_payment():
     return jsonify(result=f'{payment:,.2f}', schedule=scheduleHTML)  # format payment to include a comma
 
 
-@app.route('/api/v1/payment/explore', methods=['GET', 'POST'])
+@app.route('/api/v1/payment/explore', methods=['POST'])
 def get_explore_payment():
     """Returns a loan's monthly payment amount, amortization schedule, payoff details, 
         and increased payment amount in JSON format.
     """
-    if request.method != 'POST':
-        return redirect(url_for('home'))
     loanAmount = float(request.form['loanAmount'])
     interestRate = float(request.form['interestRate']) / 100
     yearsToRepay = int(request.form['yearsToRepay'])
