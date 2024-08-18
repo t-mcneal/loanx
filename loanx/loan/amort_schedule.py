@@ -43,7 +43,7 @@ class AmortizationSchedule:
         create a data frame. The created data frame
         is an amortization schedule.
         """
-        pd.set_option('max_rows', 360)
+        pd.options.display.max_rows = 360
         nb = self.getLoanAmount()
         payment = self.getPayment()
         scheduleData = []
